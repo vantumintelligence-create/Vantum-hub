@@ -1,26 +1,37 @@
-import { MetaMark, GoogleMark, TikTokMark, GoHighLevelMark, ZapierMark, OpenAIMark } from "./brand-icons";
+import {
+  OpenAIMark,
+  AnthropicMark,
+  GoogleMark,
+  MetaMark,
+  GoHighLevelMark,
+  TwilioMark,
+  N8nMark,
+} from "./brand-icons";
 
 const TOOLS = [
-  { Icon: MetaMark, name: "Meta", wide: true },
-  { Icon: GoogleMark, name: "Google", wide: false },
-  { Icon: TikTokMark, name: "TikTok", wide: false },
-  { Icon: GoHighLevelMark, name: "GoHighLevel", wide: false },
-  { Icon: ZapierMark, name: "Zapier", wide: false },
-  { Icon: OpenAIMark, name: "OpenAI", wide: false },
+  { Icon: OpenAIMark, name: "OpenAI" },
+  { Icon: AnthropicMark, name: "Anthropic" },
+  { Icon: GoogleMark, name: "Google" },
+  { Icon: MetaMark, name: "Meta" },
+  { Icon: GoHighLevelMark, name: "GoHighLevel" },
+  { Icon: TwilioMark, name: "Twilio" },
+  { Icon: N8nMark, name: "n8n" },
 ];
 
 export function TrustStrip() {
   return (
-    <section className="border-y border-[#f5f1e8]/8 bg-[#0b0906] py-10">
+    <section className="border-y border-[#f5f1e8]/8 bg-[#0b0906] py-8 lg:py-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <p className="text-center font-mono-vt text-[11px] uppercase tracking-[0.28em] text-[#f5f1e8]/40">
-          Built on the tools your business already runs on.
+          Powered by the platforms behind modern business.
         </p>
-        <div className="mt-7 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
-          {TOOLS.map(({ Icon, name, wide }) => (
-            <div key={name} className="flex items-center gap-2.5 text-[#f5f1e8]/75">
-              <Icon className={wide ? "h-5 w-9" : "h-5 w-5"} />
-              <span className="text-base font-medium">{name}</span>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-7 gap-y-4 lg:mt-7 lg:gap-x-11 lg:gap-y-6">
+          {TOOLS.map(({ Icon, name }) => (
+            <div key={name} className="flex items-center gap-2 text-[#f5f1e8]/70">
+              <span className="grid h-5 w-5 shrink-0 place-items-center">
+                <Icon className="h-full w-full" />
+              </span>
+              <span className="text-sm font-medium">{name}</span>
             </div>
           ))}
         </div>
