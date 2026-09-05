@@ -1,50 +1,107 @@
-import { IconChat, IconTarget, IconPlay, IconBarChart } from "./icons";
+import { IconArrowRight } from "./icons";
+import {
+  IconAuditPath,
+  IconEngineerSystem,
+  IconDeployConnect,
+  IconMeasureImprove,
+} from "./process-icons";
 
-const STEPS = [
-  { n: "01", icon: IconChat, title: "Discover", body: "We learn about your business, goals, and opportunities." },
-  { n: "02", icon: IconTarget, title: "Strategize", body: "We build a custom plan for ads, automation, and growth." },
-  { n: "03", icon: IconPlay, title: "Execute", body: "We launch, optimize, and manage everything for you." },
-  { n: "04", icon: IconBarChart, title: "Scale", body: "You get more leads, more customers, and more freedom." },
+const STAGES = [
+  {
+    n: "01",
+    icon: IconAuditPath,
+    title: "Audit The Revenue Path",
+    body: "We map how prospects find you, contact you, get followed up with, and become customers. Then we identify where attention, leads, and revenue are being lost.",
+  },
+  {
+    n: "02",
+    icon: IconEngineerSystem,
+    title: "Engineer The System",
+    body: "We design the right combination of advertising, creative, CRM workflows, AI, follow-up, and automation around how your business actually operates.",
+  },
+  {
+    n: "03",
+    icon: IconDeployConnect,
+    title: "Deploy & Connect",
+    body: "We launch the campaigns and connect the systems behind them: lead capture, routing, SMS, email, missed-call response, reviews, reactivation, and reporting.",
+  },
+  {
+    n: "04",
+    icon: IconMeasureImprove,
+    title: "Measure & Improve",
+    body: "We use real performance data to improve creative, campaigns, follow-up, and workflows, eliminating weak points and expanding what produces results.",
+  },
 ];
 
 export function Process() {
   return (
-    <section id="process" className="border-t border-[#f5f1e8]/8 py-24 lg:py-32">
+    <section id="process" className="border-t border-[#292A29] bg-[#080909] py-14 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-8">
           <div>
-            <p className="vt-reveal font-mono-vt text-xs uppercase tracking-[0.28em] text-[#c9a24b]">
-              Our Process
+            <p className="vt-reveal font-mono-vt text-xs uppercase tracking-[0.28em] text-[#D6A83E]">
+              Our Approach
             </p>
-            <h2 className="vt-reveal vt-reveal-1 mt-4 max-w-lg font-display text-3xl font-semibold tracking-tight text-[#f5f1e8] md:text-4xl">
-              A Simple Process. Real Results.
+            <h2 className="vt-reveal vt-reveal-1 mt-4 max-w-lg font-display text-3xl font-semibold tracking-tight text-[#F1F0EC] md:text-4xl">
+              We Don&apos;t Sell Random Services. We Build The System.
             </h2>
           </div>
-          <p className="vt-reveal vt-reveal-1 max-w-sm text-sm leading-relaxed text-[#f5f1e8]/55">
-            From strategy to execution, we make growth simple, with full support at every step.
+          <p className="vt-reveal vt-reveal-1 max-w-sm text-sm leading-relaxed text-[#A7A6A1]">
+            From the first click to the final follow-up, we identify where growth is being
+            lost, connect the right systems, and continuously improve what drives results.
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {STEPS.map(({ n, icon: Icon, title, body }, i) => (
-            <div
-              key={n}
-              className={`vt-reveal vt-reveal-${Math.min(i + 1, 4)} relative rounded-2xl border border-[#f5f1e8]/10 bg-[#12100d] p-6`}
+        {/* Desktop: one connected horizontal system flow. */}
+        <div className="relative mt-14 hidden lg:block">
+          <div className="pointer-events-none absolute inset-x-0 top-8 h-px bg-[#D6A83E]/35" />
+          {[25, 50, 75].map((pos) => (
+            <span
+              key={pos}
+              style={{ left: `${pos}%` }}
+              className="pointer-events-none absolute top-8 -translate-x-1/2 -translate-y-1/2 text-[#D6A83E]/70"
             >
-              <div className="flex items-center justify-between">
-                <span className="font-mono-vt text-xs text-[#f5f1e8]/35">{n}</span>
-                <Icon className="h-5 w-5 text-[#c9a24b]" />
-              </div>
-              <h3 className="mt-5 font-display text-lg font-semibold text-[#f5f1e8]">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#f5f1e8]/55">{body}</p>
-              {i < STEPS.length - 1 && (
-                <span className="absolute -right-3 top-1/2 hidden -translate-y-1/2 text-[#f5f1e8]/20 lg:block">
-                  →
-                </span>
-              )}
-            </div>
+              <IconArrowRight className="h-3 w-3" />
+            </span>
           ))}
+          <div className="grid grid-cols-4 gap-6">
+            {STAGES.map(({ n, icon: Icon, title, body }, i) => (
+              <div key={n} className={`vt-reveal vt-reveal-${Math.min(i + 1, 4)} px-1 text-center`}>
+                <div className="relative z-10 mx-auto grid h-16 w-16 place-items-center rounded-full border border-[#292A29] bg-[#121313]">
+                  <Icon className="h-6 w-6 text-[#D6A83E]" />
+                </div>
+                <span className="mt-4 block font-mono-vt text-[10px] uppercase tracking-[0.22em] text-[#A7A6A1]">
+                  Stage {n}
+                </span>
+                <h3 className="mt-2 font-display text-sm font-semibold uppercase tracking-wide text-[#F1F0EC]">
+                  {title}
+                </h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-[#A7A6A1]">{body}</p>
+              </div>
+            ))}
+          </div>
         </div>
+
+        {/* Mobile: compact vertical timeline. */}
+        <ol className="relative mt-10 space-y-7 border-l border-[#D6A83E]/35 pl-8 lg:hidden">
+          {STAGES.map(({ n, icon: Icon, title, body }, i) => (
+            <li
+              key={n}
+              className={`vt-reveal vt-reveal-${Math.min(i + 1, 4)} relative`}
+            >
+              <span className="absolute -left-12 top-0 grid h-8 w-8 place-items-center rounded-full border border-[#D6A83E]/50 bg-[#121313] font-mono-vt text-[10px] text-[#D6A83E]">
+                {n}
+              </span>
+              <div className="flex items-center gap-2">
+                <Icon className="h-4 w-4 shrink-0 text-[#D6A83E]" />
+                <h3 className="font-display text-sm font-semibold uppercase tracking-wide text-[#F1F0EC]">
+                  {title}
+                </h3>
+              </div>
+              <p className="mt-1.5 text-sm leading-relaxed text-[#A7A6A1]">{body}</p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
