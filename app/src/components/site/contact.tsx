@@ -34,10 +34,7 @@ export function Contact() {
     <section id="contact" className="border-t border-[#f5f1e8]/8 py-24 lg:py-32">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-14 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
         <div>
-          <p className="vt-reveal font-mono-vt text-xs uppercase tracking-[0.28em] text-[#c9a24b]">
-            Get Started
-          </p>
-          <h2 className="vt-reveal vt-reveal-1 mt-4 font-display text-3xl font-semibold tracking-tight text-[#f5f1e8] md:text-4xl">
+          <h2 className="vt-reveal font-display text-3xl font-semibold tracking-tight text-[#f5f1e8] md:text-4xl">
             Tell us about your business.
           </h2>
           <p className="vt-reveal vt-reveal-1 mt-4 max-w-sm text-sm leading-relaxed text-[#f5f1e8]/55">
