@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 
 import { submitLead } from "../../lib/api/leads.functions";
 import { IconArrowRight } from "./icons";
+import { useSectionReveal } from "../../hooks/use-section-reveal";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -25,6 +26,7 @@ function ContactRow({ label, value, href }: { label: string; value: string; href
 }
 
 export function Contact() {
+  const containerRef = useSectionReveal<HTMLDivElement>();
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -52,24 +54,24 @@ export function Contact() {
 
   return (
     <section id="contact" className="border-t border-[#f5f1e8]/8 py-24 lg:py-32">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-14 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:px-10">
-        <div>
-          <h2 className="vt-reveal font-display text-3xl font-semibold tracking-tight text-[#f5f1e8] md:text-4xl">
+      <div ref={containerRef} className="mx-auto grid max-w-7xl grid-cols-1 gap-14 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:px-10">
+        <div data-reveal>
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-[#f5f1e8] md:text-4xl">
             Tell us about your business.
           </h2>
-          <p className="vt-reveal vt-reveal-1 mt-4 max-w-sm text-sm leading-relaxed text-[#f5f1e8]/55">
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-[#f5f1e8]/55">
             Share a few details and we will follow up with a plan for your ads and automation,
             no obligation. Prefer to skip the form? Reach us directly below.
           </p>
 
-          <div className="vt-reveal vt-reveal-2 mt-10 border-t border-[#f5f1e8]/10">
+          <div data-reveal className="mt-10 border-t border-[#f5f1e8]/10">
             <ContactRow label="Email" value="hello@vantumintelligence.com" href="mailto:hello@vantumintelligence.com" />
             <ContactRow label="Phone" value="(555) 019-2044" href="tel:+15550192044" />
             <ContactRow label="Hours" value="Mon-Fri, 9am-6pm ET" href="#contact" />
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="vt-reveal vt-reveal-2" noValidate>
+        <form data-reveal onSubmit={handleSubmit} noValidate>
           {status === "success" ? (
             <div className="rounded-2xl border border-[#c9a24b]/30 bg-[#12100d] p-10 text-center">
               <p className="font-display text-lg font-semibold text-[#f5f1e8]">Request received.</p>

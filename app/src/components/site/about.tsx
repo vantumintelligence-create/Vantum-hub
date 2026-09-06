@@ -1,11 +1,18 @@
+import { useSectionReveal } from "../../hooks/use-section-reveal";
+
 export function About() {
+  const containerRef = useSectionReveal<HTMLDivElement>();
+
   return (
     <section id="about" className="border-t border-[#f5f1e8]/8 py-24 lg:py-32">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-2 lg:gap-16 lg:px-10">
-        <h2 className="vt-reveal font-display text-3xl font-semibold leading-tight tracking-tight text-[#f5f1e8] md:text-4xl">
+      <div
+        ref={containerRef}
+        className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-2 lg:gap-16 lg:px-10"
+      >
+        <h2 data-reveal className="font-display text-3xl font-semibold leading-tight tracking-tight text-[#f5f1e8] md:text-4xl">
           Built for businesses that are done doing growth manually.
         </h2>
-        <div className="vt-reveal vt-reveal-1 space-y-5 text-sm leading-relaxed text-[#f5f1e8]/60">
+        <div data-reveal className="space-y-5 text-sm leading-relaxed text-[#f5f1e8]/60">
           <p>
             Vantum Intelligence exists because most local and regional businesses are stuck
             juggling ad platforms, missed calls, and follow-up that never happens. We are the

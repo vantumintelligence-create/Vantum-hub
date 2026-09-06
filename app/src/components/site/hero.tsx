@@ -1,6 +1,11 @@
 import { IconArrowRight, IconPlay, IconBarChart, IconBolt, IconPeople } from "./icons";
+import { useParallax } from "../../hooks/use-parallax";
+import { useMagnetic } from "../../hooks/use-magnetic";
 
 export function Hero() {
+  const imageRef = useParallax<HTMLImageElement>(10);
+  const ctaRef = useMagnetic<HTMLAnchorElement>(0.2);
+
   return (
     <section
       id="top"
@@ -35,6 +40,7 @@ export function Hero() {
           </p>
           <div className="vt-reveal vt-reveal-4 mt-6 flex flex-wrap items-center gap-4 lg:mt-8">
             <a
+              ref={ctaRef}
               href="#contact"
               className="group inline-flex items-center gap-2 rounded-full bg-[#c9a24b] px-6 py-3.5 text-sm font-medium text-[#0b0906] transition-colors hover:bg-[#e3bd6c]"
             >
@@ -72,9 +78,10 @@ export function Hero() {
         <div className="vt-reveal vt-reveal-2 relative hidden lg:block">
           <div className="relative aspect-[5/6] overflow-hidden rounded-2xl border border-[#f5f1e8]/10">
             <img
+              ref={imageRef}
               src="/assets/hero-monolith.jpg"
               alt="A gold-lit monolithic V landmark rising from dark mountain terrain"
-              className="h-full w-full object-cover"
+              className="h-full w-full scale-110 object-cover"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b0906]/40 via-transparent to-transparent" />
           </div>

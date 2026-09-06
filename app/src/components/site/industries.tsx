@@ -1,3 +1,5 @@
+import { useSectionReveal } from "../../hooks/use-section-reveal";
+
 const INDUSTRIES = [
   "Home Services",
   "Medical & Dental",
@@ -9,10 +11,12 @@ const INDUSTRIES = [
 ];
 
 export function Industries() {
+  const containerRef = useSectionReveal<HTMLDivElement>();
+
   return (
     <section className="border-t border-[#f5f1e8]/8 py-12">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-2.5 text-center">
+      <div ref={containerRef} className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div data-reveal className="flex flex-wrap items-center justify-center gap-x-2 gap-y-2.5 text-center">
           <span className="font-mono-vt mr-2 text-[11px] uppercase tracking-[0.28em] text-[#f5f1e8]/40">
             We work with
           </span>

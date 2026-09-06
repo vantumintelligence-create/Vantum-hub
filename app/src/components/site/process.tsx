@@ -5,6 +5,8 @@ import {
   IconDeployConnect,
   IconMeasureImprove,
 } from "./process-icons";
+import { useDrawLine } from "../../hooks/use-draw-line";
+import { useSectionReveal } from "../../hooks/use-section-reveal";
 
 const STAGES = [
   {
@@ -34,6 +36,10 @@ const STAGES = [
 ];
 
 export function Process() {
+  const { sectionRef, lineRef } = useDrawLine<HTMLDivElement>();
+  const containerRef = useSectionReveal<HTMLDivElement>();
+  const mobileRef = useSectionReveal<HTMLOListElement>("li");
+
   return (
     <section id="process" className="border-t border-[#292A29] bg-[#080909] py-14 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -53,8 +59,9 @@ export function Process() {
         </div>
 
         {/* Desktop: one connected horizontal system flow. */}
-        <div className="relative mt-14 hidden lg:block">
-          <div className="pointer-events-none absolute inset-x-0 top-8 h-px bg-[#D6A83E]/35" />
+        <div ref={sectionRef} className="relative mt-14 hidden lg:block">
+          <div className="pointer-events-none absolute inset-x-0 top-8 h-px bg-[#D6A83E]/15" />
+          <div ref={lineRef} className="pointer-events-none absolute inset-x-0 top-8 h-px bg-[#D6A83E]/60" />
           {[25, 50, 75].map((pos) => (
             <span
               key={pos}
@@ -64,11 +71,12 @@ export function Process() {
               <IconArrowRight className="h-3 w-3" />
             </span>
           ))}
-          <div className="grid grid-cols-4 gap-6">
-            {STAGES.map(({ n, icon: Icon, title, body }, i) => (
+          <div ref={containerRef} className="grid grid-cols-4 gap-6">
+            {STAGES.map(({ n, icon: Icon, title, body }) => (
               <div
                 key={n}
-                className={`vt-reveal vt-reveal-${Math.min(i + 1, 4)} relative overflow-hidden px-1 pt-2 text-center`}
+                data-reveal
+                className="relative overflow-hidden px-1 pt-2 text-center"
               >
                 <span
                   aria-hidden="true"
@@ -89,11 +97,12 @@ export function Process() {
         </div>
 
         {/* Mobile: compact vertical timeline. */}
-        <ol className="relative mt-10 space-y-8 border-l border-[#D6A83E]/35 pl-8 lg:hidden">
-          {STAGES.map(({ n, icon: Icon, title, body }, i) => (
+        <ol ref={mobileRef} className="relative mt-10 space-y-8 border-l border-[#D6A83E]/35 pl-8 lg:hidden">
+          {STAGES.map(({ n, icon: Icon, title, body }) => (
             <li
               key={n}
-              className={`vt-reveal vt-reveal-${Math.min(i + 1, 4)} relative overflow-hidden`}
+              data-reveal
+              className="relative overflow-hidden"
             >
               <span
                 aria-hidden="true"

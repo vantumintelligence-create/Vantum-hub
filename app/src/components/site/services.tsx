@@ -1,4 +1,5 @@
 import { IconMegaphone, IconGear, IconArrowRight } from "./icons";
+import { useSectionReveal } from "../../hooks/use-section-reveal";
 
 const AD_CHECKLIST = [
   "Static ad design",
@@ -95,26 +96,28 @@ function AutomationMockup() {
 }
 
 export function Services() {
+  const containerRef = useSectionReveal<HTMLDivElement>();
+
   return (
     <section id="services" className="py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+      <div ref={containerRef} className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div data-reveal className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
-            <p className="vt-reveal font-mono-vt text-xs uppercase tracking-[0.28em] text-[#c9a24b]">
+            <p className="font-mono-vt text-xs uppercase tracking-[0.28em] text-[#c9a24b]">
               Our Services
             </p>
-            <h2 className="vt-reveal vt-reveal-1 mt-4 max-w-lg font-display text-3xl font-semibold tracking-tight text-[#f5f1e8] md:text-4xl">
+            <h2 className="mt-4 max-w-lg font-display text-3xl font-semibold tracking-tight text-[#f5f1e8] md:text-4xl">
               Two Powerful Solutions. One Partner.
             </h2>
           </div>
-          <p className="vt-reveal vt-reveal-1 max-w-sm text-sm leading-relaxed text-[#f5f1e8]/55">
+          <p className="max-w-sm text-sm leading-relaxed text-[#f5f1e8]/55">
             We combine high-converting creative with intelligent automation to help your
             business attract, engage, and retain more customers.
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <article className="vt-reveal vt-reveal-2 rounded-2xl border border-[#f5f1e8]/10 bg-[#12100d] p-8">
+        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <article data-reveal className="rounded-2xl border border-[#f5f1e8]/10 bg-[#12100d] p-8">
             <span className="grid h-11 w-11 place-items-center rounded-xl border border-[#c9a24b]/30 text-[#c9a24b]">
               <IconMegaphone className="h-5 w-5" />
             </span>
@@ -136,7 +139,7 @@ export function Services() {
             <LearnMore />
           </article>
 
-          <article className="vt-reveal vt-reveal-3 rounded-2xl border border-[#f5f1e8]/10 bg-[#12100d] p-8">
+          <article data-reveal className="rounded-2xl border border-[#f5f1e8]/10 bg-[#12100d] p-8 lg:mt-10">
             <span className="grid h-11 w-11 place-items-center rounded-xl border border-[#c9a24b]/30 text-[#c9a24b]">
               <IconGear className="h-5 w-5" />
             </span>
