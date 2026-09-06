@@ -12,7 +12,7 @@ export function TrustStrip() {
   const containerRef = useSectionReveal<HTMLDivElement>();
 
   return (
-    <section className="border-y border-[#f5f1e8]/8 bg-[#0b0906] py-12 lg:py-14">
+    <section className="border-y border-[#f5f1e8]/8 bg-[#0d1712] py-12 lg:py-14">
       <div ref={containerRef} className="mx-auto max-w-7xl px-6 text-center lg:px-10">
         <p data-reveal className="font-mono-vt text-xs uppercase tracking-[0.28em] text-[#c9a24b]">
           Technology

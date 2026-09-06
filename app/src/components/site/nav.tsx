@@ -12,7 +12,7 @@ const LINKS = [
 
 export function SiteNav() {
   return (
-    <header className="fixed inset-x-0 top-0 z-40 border-b border-[#f5f1e8]/8 bg-[#0b0906]/85 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-40 border-b border-[#f5f1e8]/8 bg-[#0d1712]/85 backdrop-blur-md">
       <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
         <a href="#top" className="shrink-0">
           <LogoMark />
@@ -31,7 +31,7 @@ export function SiteNav() {
         </ul>
         <a
           href="#contact"
-          className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-[#c9a24b] px-4 py-2.5 text-sm font-medium text-[#0b0906] transition-colors hover:bg-[#e3bd6c]"
+          className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-[#c9a24b] px-4 py-2.5 text-sm font-medium text-[#0d1712] transition-colors hover:bg-[#e3bd6c]"
         >
           Book a Strategy Call
           <IconArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

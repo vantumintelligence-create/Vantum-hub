@@ -73,7 +73,7 @@ export function Contact() {
 
         <form data-reveal onSubmit={handleSubmit} noValidate>
           {status === "success" ? (
-            <div className="rounded-2xl border border-[#c9a24b]/30 bg-[#12100d] p-10 text-center">
+            <div className="rounded-2xl border border-[#c9a24b]/30 bg-[#142019] p-10 text-center">
               <p className="font-display text-lg font-semibold text-[#f5f1e8]">Request received.</p>
               <p className="mt-2 text-sm text-[#f5f1e8]/60">
                 We will reach out shortly to schedule your strategy call.
@@ -101,10 +101,10 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="group relative mt-2 inline-flex items-center gap-2 overflow-hidden rounded-md bg-[#c9a24b] px-7 py-3.5 text-sm font-medium text-[#0b0906] transition-transform active:translate-y-px active:scale-[0.98] disabled:opacity-60"
+                className="group relative mt-2 inline-flex items-center gap-2 overflow-hidden rounded-md bg-[#c9a24b] px-7 py-3.5 text-sm font-medium text-[#0d1712] transition-transform active:translate-y-px active:scale-[0.98] disabled:opacity-60"
               >
-                <span className="pointer-events-none absolute left-1 top-1 h-2.5 w-2.5 -translate-x-2 -translate-y-2 border-l-2 border-t-2 border-[#0b0906]/0 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:border-[#0b0906]/40" />
-                <span className="pointer-events-none absolute bottom-1 right-1 h-2.5 w-2.5 translate-x-2 translate-y-2 border-b-2 border-r-2 border-[#0b0906]/0 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:border-[#0b0906]/40" />
+                <span className="pointer-events-none absolute left-1 top-1 h-2.5 w-2.5 -translate-x-2 -translate-y-2 border-l-2 border-t-2 border-[#0d1712]/0 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:border-[#0d1712]/40" />
+                <span className="pointer-events-none absolute bottom-1 right-1 h-2.5 w-2.5 translate-x-2 translate-y-2 border-b-2 border-r-2 border-[#0d1712]/0 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:border-[#0d1712]/40" />
                 {status === "loading" ? "Sending..." : "Send Message"}
               </button>
             </div>

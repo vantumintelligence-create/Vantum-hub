@@ -32,32 +32,32 @@ function LearnMore() {
 function AdMockup() {
   return (
     <div className="relative h-full w-full">
-      <div className="absolute inset-x-4 top-4 overflow-hidden rounded-lg border border-[#f5f1e8]/15 bg-[#161310] shadow-2xl">
-        <div className="flex h-6 items-center gap-1.5 bg-[#1d1a15] px-3">
+      <div className="absolute inset-x-4 top-4 overflow-hidden rounded-lg border border-[#f5f1e8]/15 bg-[#17241c] shadow-2xl">
+        <div className="flex h-6 items-center gap-1.5 bg-[#1c2921] px-3">
           <span className="h-1.5 w-1.5 rounded-full bg-[#f5f1e8]/25" />
           <span className="h-1.5 w-1.5 rounded-full bg-[#f5f1e8]/25" />
           <span className="h-1.5 w-1.5 rounded-full bg-[#f5f1e8]/25" />
         </div>
         <div className="relative aspect-[16/10]">
           <img src="/assets/interior.jpg" alt="Modern home interior used in the ad creative" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0b0906]/85 via-[#0b0906]/10 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0d1712]/85 via-[#0d1712]/10 to-transparent" />
           <div className="absolute inset-x-4 bottom-3">
             <p className="font-display text-base font-semibold leading-tight text-[#f5f1e8]">Transform Your Space</p>
             <p className="mt-0.5 text-[11px] text-[#f5f1e8]/70">Custom. Reliable. Local.</p>
-            <span className="mt-2 inline-block rounded bg-[#c9a24b] px-2.5 py-1 text-[10px] font-semibold text-[#0b0906]">
+            <span className="mt-2 inline-block rounded bg-[#c9a24b] px-2.5 py-1 text-[10px] font-semibold text-[#0d1712]">
               Get A Quote
             </span>
           </div>
         </div>
       </div>
-      <div className="absolute -bottom-2 left-2 w-28 overflow-hidden rounded-2xl border-4 border-[#1d1a15] bg-[#161310] shadow-2xl">
+      <div className="absolute -bottom-2 left-2 w-28 overflow-hidden rounded-2xl border-4 border-[#1c2921] bg-[#17241c] shadow-2xl">
         <div className="relative aspect-[9/16]">
           <img src="/assets/interior.jpg" alt="" aria-hidden className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0b0906]/90 via-[#0b0906]/25 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0d1712]/90 via-[#0d1712]/25 to-transparent" />
           <div className="absolute inset-x-2 bottom-2">
             <p className="text-[9px] font-semibold leading-tight text-[#f5f1e8]">Quality Work.</p>
             <p className="text-[9px] font-semibold leading-tight text-[#f5f1e8]">Lasting Results.</p>
-            <span className="mt-1 inline-block rounded bg-[#c9a24b] px-1.5 py-0.5 text-[7px] font-semibold text-[#0b0906]">
+            <span className="mt-1 inline-block rounded bg-[#c9a24b] px-1.5 py-0.5 text-[7px] font-semibold text-[#0d1712]">
               Get A Quote
             </span>
           </div>
@@ -70,7 +70,7 @@ function AdMockup() {
 function AutomationMockup() {
   return (
     <div className="flex h-full items-center justify-center py-6">
-      <div className="w-40 overflow-hidden rounded-[1.4rem] border-4 border-[#1d1a15] bg-[#12100d] shadow-2xl">
+      <div className="w-40 overflow-hidden rounded-[1.4rem] border-4 border-[#1c2921] bg-[#142019] shadow-2xl">
         <div className="flex items-center gap-2 border-b border-[#f5f1e8]/10 px-3 py-2.5">
           <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#c9a24b]/20 text-[10px] text-[#c9a24b]">
             !
@@ -82,11 +82,11 @@ function AutomationMockup() {
           <span className="ml-auto text-[7px] text-[#f5f1e8]/35">2m ago</span>
         </div>
         <div className="space-y-2 p-3">
-          <p className="rounded-lg rounded-tl-sm bg-[#1d1a15] p-2.5 text-[8.5px] leading-snug text-[#f5f1e8]/80">
+          <p className="rounded-lg rounded-tl-sm bg-[#1c2921] p-2.5 text-[8.5px] leading-snug text-[#f5f1e8]/80">
             Hi! Thanks for reaching out. We&apos;re currently unavailable, but we&apos;ll get back to you
             shortly. In the meantime, would you like to schedule a time that works for you?
           </p>
-          <span className="block w-fit rounded bg-[#c9a24b] px-2.5 py-1.5 text-[8px] font-semibold text-[#0b0906]">
+          <span className="block w-fit rounded bg-[#c9a24b] px-2.5 py-1.5 text-[8px] font-semibold text-[#0d1712]">
             Schedule Now
           </span>
         </div>
@@ -117,7 +117,7 @@ export function Services() {
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-          <article data-reveal className="rounded-2xl border border-[#f5f1e8]/10 bg-[#12100d] p-8">
+          <article data-reveal className="rounded-2xl border border-[#f5f1e8]/10 bg-[#142019] p-8">
             <span className="grid h-11 w-11 place-items-center rounded-xl border border-[#c9a24b]/30 text-[#c9a24b]">
               <IconMegaphone className="h-5 w-5" />
             </span>
@@ -133,13 +133,13 @@ export function Services() {
                 </li>
               ))}
             </ul>
-            <div className="relative mt-7 h-56 rounded-xl bg-[#0b0906]">
+            <div className="relative mt-7 h-56 rounded-xl bg-[#0d1712]">
               <AdMockup />
             </div>
             <LearnMore />
           </article>
 
-          <article data-reveal className="rounded-2xl border border-[#f5f1e8]/10 bg-[#12100d] p-8 lg:mt-10">
+          <article data-reveal className="rounded-2xl border border-[#f5f1e8]/10 bg-[#142019] p-8 lg:mt-10">
             <span className="grid h-11 w-11 place-items-center rounded-xl border border-[#c9a24b]/30 text-[#c9a24b]">
               <IconGear className="h-5 w-5" />
             </span>
@@ -155,7 +155,7 @@ export function Services() {
                 </li>
               ))}
             </ul>
-            <div className="relative mt-7 h-56 rounded-xl bg-[#0b0906]">
+            <div className="relative mt-7 h-56 rounded-xl bg-[#0d1712]">
               <AutomationMockup />
             </div>
             <LearnMore />

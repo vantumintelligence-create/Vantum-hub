@@ -41,7 +41,7 @@ export function Process() {
   const mobileRef = useSectionReveal<HTMLOListElement>("li");
 
   return (
-    <section id="process" className="border-t border-[#292A29] bg-[#080909] py-14 lg:py-32">
+    <section id="process" className="border-t border-[#28352c] bg-[#0a120d] py-14 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-8">
           <div>
@@ -84,7 +84,7 @@ export function Process() {
                 >
                   {n}
                 </span>
-                <div className="relative z-10 mx-auto grid h-16 w-16 place-items-center rounded-full border border-[#292A29] bg-[#121313]">
+                <div className="relative z-10 mx-auto grid h-16 w-16 place-items-center rounded-full border border-[#28352c] bg-[#131f18]">
                   <Icon className="h-6 w-6 text-[#D6A83E]" />
                 </div>
                 <h3 className="relative z-10 mt-4 font-display text-sm font-semibold uppercase tracking-wide text-[#F1F0EC]">

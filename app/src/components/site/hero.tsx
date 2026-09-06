@@ -42,7 +42,7 @@ export function Hero() {
             <a
               ref={ctaRef}
               href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-[#c9a24b] px-6 py-3.5 text-sm font-medium text-[#0b0906] transition-colors hover:bg-[#e3bd6c]"
+              className="group inline-flex items-center gap-2 rounded-full bg-[#c9a24b] px-6 py-3.5 text-sm font-medium text-[#0d1712] transition-colors hover:bg-[#e3bd6c]"
             >
               Book a Strategy Call
               <IconArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -51,7 +51,7 @@ export function Hero() {
               href="#process"
               className="group inline-flex items-center gap-2.5 rounded-full border border-[#f5f1e8]/25 px-5 py-3.5 text-sm font-medium text-[#f5f1e8] transition-colors hover:border-[#c9a24b]"
             >
-              <span className="grid h-6 w-6 place-items-center rounded-full border border-current transition-colors duration-300 group-hover:bg-[#c9a24b] group-hover:text-[#0b0906]">
+              <span className="grid h-6 w-6 place-items-center rounded-full border border-current transition-colors duration-300 group-hover:bg-[#c9a24b] group-hover:text-[#0d1712]">
                 <IconPlay className="h-3.5 w-3.5" />
               </span>
               See How It Works
@@ -80,10 +80,10 @@ export function Hero() {
             <img
               ref={imageRef}
               src="/assets/hero-monolith.jpg"
-              alt="A gold-lit monolithic V landmark rising from dark mountain terrain"
+              alt="A glowing gold V monolith rising from a misty dark emerald forest"
               className="h-full w-full scale-110 object-cover"
             />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b0906]/40 via-transparent to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0d1712]/40 via-transparent to-transparent" />
           </div>
           <div className="absolute -right-3 top-8 hidden flex-col gap-2 lg:flex">
             {["People", "Technology", "Growth", "Without Limits"].map((word) => (
