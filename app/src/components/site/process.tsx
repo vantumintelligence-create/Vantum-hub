@@ -66,39 +66,49 @@ export function Process() {
           ))}
           <div className="grid grid-cols-4 gap-6">
             {STAGES.map(({ n, icon: Icon, title, body }, i) => (
-              <div key={n} className={`vt-reveal vt-reveal-${Math.min(i + 1, 4)} px-1 text-center`}>
+              <div
+                key={n}
+                className={`vt-reveal vt-reveal-${Math.min(i + 1, 4)} relative overflow-hidden px-1 pt-2 text-center`}
+              >
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 -top-3 select-none font-display text-[6.5rem] font-semibold leading-none text-[#D6A83E]/[0.06]"
+                >
+                  {n}
+                </span>
                 <div className="relative z-10 mx-auto grid h-16 w-16 place-items-center rounded-full border border-[#292A29] bg-[#121313]">
                   <Icon className="h-6 w-6 text-[#D6A83E]" />
                 </div>
-                <span className="mt-4 block font-mono-vt text-[10px] uppercase tracking-[0.22em] text-[#A7A6A1]">
-                  Stage {n}
-                </span>
-                <h3 className="mt-2 font-display text-sm font-semibold uppercase tracking-wide text-[#F1F0EC]">
+                <h3 className="relative z-10 mt-4 font-display text-sm font-semibold uppercase tracking-wide text-[#F1F0EC]">
                   {title}
                 </h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-[#A7A6A1]">{body}</p>
+                <p className="relative z-10 mt-2.5 text-sm leading-relaxed text-[#A7A6A1]">{body}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Mobile: compact vertical timeline. */}
-        <ol className="relative mt-10 space-y-7 border-l border-[#D6A83E]/35 pl-8 lg:hidden">
+        <ol className="relative mt-10 space-y-8 border-l border-[#D6A83E]/35 pl-8 lg:hidden">
           {STAGES.map(({ n, icon: Icon, title, body }, i) => (
             <li
               key={n}
-              className={`vt-reveal vt-reveal-${Math.min(i + 1, 4)} relative`}
+              className={`vt-reveal vt-reveal-${Math.min(i + 1, 4)} relative overflow-hidden`}
             >
-              <span className="absolute -left-12 top-0 grid h-8 w-8 place-items-center rounded-full border border-[#D6A83E]/50 bg-[#121313] font-mono-vt text-[10px] text-[#D6A83E]">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -left-2 -top-4 select-none font-display text-6xl font-semibold leading-none text-[#D6A83E]/[0.08]"
+              >
                 {n}
               </span>
-              <div className="flex items-center gap-2">
+              <span className="absolute -left-12 top-0.5 h-2 w-2 rounded-full bg-[#D6A83E]" />
+              <div className="relative z-10 flex items-center gap-2">
                 <Icon className="h-4 w-4 shrink-0 text-[#D6A83E]" />
                 <h3 className="font-display text-sm font-semibold uppercase tracking-wide text-[#F1F0EC]">
                   {title}
                 </h3>
               </div>
-              <p className="mt-1.5 text-sm leading-relaxed text-[#A7A6A1]">{body}</p>
+              <p className="relative z-10 mt-1.5 text-sm leading-relaxed text-[#A7A6A1]">{body}</p>
             </li>
           ))}
         </ol>

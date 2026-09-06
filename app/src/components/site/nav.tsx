@@ -31,7 +31,7 @@ export function SiteNav() {
         </ul>
         <a
           href="#contact"
-          className="group inline-flex shrink-0 items-center gap-2 rounded-md bg-[#c9a24b] px-4 py-2.5 text-sm font-medium text-[#0b0906] transition-colors hover:bg-[#e3bd6c]"
+          className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-[#c9a24b] px-4 py-2.5 text-sm font-medium text-[#0b0906] transition-colors hover:bg-[#e3bd6c]"
         >
           Book a Strategy Call
           <IconArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

@@ -24,7 +24,7 @@ export function CtaBand() {
           </p>
           <a
             href="#contact"
-            className="vt-reveal vt-reveal-3 group mt-8 inline-flex w-fit items-center gap-2 rounded-md bg-[#c9a24b] px-6 py-3.5 text-sm font-medium text-[#0b0906] transition-[transform,box-shadow] duration-150 hover:shadow-[0_0_0_1px_#e3bd6c,0_0_28px_rgba(201,162,75,0.45)] active:translate-y-px active:skew-x-[0.5deg] active:scale-[0.98]"
+            className="vt-reveal vt-reveal-3 group mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-[#c9a24b] px-6 py-3.5 text-sm font-medium text-[#0b0906] transition-[transform,box-shadow] duration-150 hover:shadow-[0_0_0_1px_#e3bd6c,0_0_28px_rgba(201,162,75,0.45)] active:translate-y-px active:skew-x-[0.5deg] active:scale-[0.98]"
           >
             Get Your Free Audit
             <IconArrowRight className="h-4 w-4" />

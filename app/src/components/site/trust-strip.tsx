@@ -33,9 +33,16 @@ export function TrustStrip() {
           ))}
         </div>
 
-        <p className="vt-reveal vt-reveal-3 mt-7 font-mono-vt text-[10px] uppercase tracking-[0.24em] text-[#f5f1e8]/35">
-          AI · Advertising · CRM · Automation · Communications · Analytics
-        </p>
+        <div className="vt-reveal vt-reveal-3 mt-7 flex flex-wrap items-center justify-center gap-2">
+          {["AI", "Advertising", "CRM", "Automation", "Communications", "Analytics"].map((cap) => (
+            <span
+              key={cap}
+              className="rounded-full border border-[#f5f1e8]/10 px-3 py-1 font-mono-vt text-[9px] uppercase tracking-[0.18em] text-[#f5f1e8]/40"
+            >
+              {cap}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
