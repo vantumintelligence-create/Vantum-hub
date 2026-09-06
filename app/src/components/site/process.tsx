@@ -58,7 +58,6 @@ export function Process() {
           </p>
         </div>
 
-        {/* Desktop: one connected horizontal system flow. */}
         <div ref={sectionRef} className="relative mt-14 hidden lg:block">
           <div className="pointer-events-none absolute inset-x-0 top-8 h-px bg-[#D6A83E]/15" />
           <div ref={lineRef} className="pointer-events-none absolute inset-x-0 top-8 h-px bg-[#D6A83E]/60" />
@@ -84,10 +83,8 @@ export function Process() {
                 >
                   {n}
                 </span>
-                <div className="relative z-10 mx-auto grid h-16 w-16 place-items-center rounded-full border border-[#28352c] bg-[#131f18]">
-                  <Icon className="h-6 w-6 text-[#D6A83E]" />
-                </div>
-                <h3 className="relative z-10 mt-4 font-display text-sm font-semibold uppercase tracking-wide text-[#F1F0EC]">
+                <Icon className="relative z-10 mx-auto h-8 w-8 text-[#D6A83E]" />
+                <h3 className="relative z-10 mt-5 font-display text-sm font-semibold uppercase tracking-wide text-[#F1F0EC]">
                   {title}
                 </h3>
                 <p className="relative z-10 mt-2.5 text-sm leading-relaxed text-[#A7A6A1]">{body}</p>
@@ -96,7 +93,6 @@ export function Process() {
           </div>
         </div>
 
-        {/* Mobile: compact vertical timeline. */}
         <ol ref={mobileRef} className="relative mt-10 space-y-8 border-l border-[#D6A83E]/35 pl-8 lg:hidden">
           {STAGES.map(({ n, icon: Icon, title, body }) => (
             <li

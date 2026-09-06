@@ -33,20 +33,17 @@ export function Results() {
           Every engagement is built around outcomes your team can feel: a busier calendar, a
           faster inbox, and a business that runs on systems instead of memory.
         </p>
-        <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-[1.3fr_1fr] lg:grid-rows-2">
-          <div
-            data-reveal
-            className="flex flex-col justify-center rounded-2xl border border-[#c9a24b]/25 bg-[#142019] p-8 lg:row-span-2 lg:p-10"
-          >
-            <FEATURED.icon className="h-6 w-6 text-[#c9a24b]" />
+        <div className="mt-14 grid grid-cols-1 gap-10 border-t border-[#f5f1e8]/10 pt-10 lg:grid-cols-4 lg:gap-8">
+          <div data-reveal className="lg:col-span-2">
+            <FEATURED.icon className="h-8 w-8 text-[#c9a24b]" />
             <h3 className="mt-5 font-display text-2xl font-semibold text-[#f5f1e8]">{FEATURED.title}</h3>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-[#f5f1e8]/55">{FEATURED.body}</p>
           </div>
           {OUTCOMES.map(({ icon: Icon, title, body }) => (
-            <div key={title} data-reveal className="rounded-2xl border border-[#f5f1e8]/10 bg-[#142019] p-7">
-              <Icon className="h-5 w-5 text-[#c9a24b]" />
-              <h3 className="mt-4 font-display text-lg font-semibold text-[#f5f1e8]">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#f5f1e8]/55">{body}</p>
+            <div key={title} data-reveal>
+              <Icon className="h-6 w-6 text-[#c9a24b]" />
+              <h3 className="mt-5 font-display text-lg font-semibold text-[#f5f1e8]">{title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#f5f1e8]/55">{body}</p>
             </div>
           ))}
         </div>
