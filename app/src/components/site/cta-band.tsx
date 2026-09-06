@@ -1,23 +1,32 @@
 import { IconArrowRight } from "./icons";
-import { useParallax } from "../../hooks/use-parallax";
+import { VMark } from "./v-mark";
 import { useSectionReveal } from "../../hooks/use-section-reveal";
 
 const POINTS = ["More Customers", "Better Systems", "A Stronger Business"];
 
 export function CtaBand() {
-  const bgRef = useParallax<HTMLImageElement>(14);
   const containerRef = useSectionReveal<HTMLDivElement>();
 
   return (
-    <section className="relative overflow-hidden py-28 lg:py-36">
-      <img
-        ref={bgRef}
-        src="/assets/cta-mountains.jpg"
-        alt="Golden dawn light breaking over a dark emerald pine forest"
-        className="absolute inset-0 h-[130%] w-full object-cover"
+    <section className="relative overflow-hidden bg-[#0a120d] py-28 lg:py-36">
+      <div
+        aria-hidden="true"
+        className="vt-drift-bg pointer-events-none absolute inset-0 opacity-70"
+        style={{
+          background:
+            "radial-gradient(45% 55% at 78% 30%, rgba(201,162,75,0.22), transparent 60%), radial-gradient(35% 45% at 15% 80%, rgba(201,162,75,0.12), transparent 65%)",
+        }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0d1712] via-[#0d1712]/70 to-[#0d1712]/30" />
-      <div ref={containerRef} className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-[1fr_auto] lg:items-end lg:px-10">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-24 -top-24 h-[560px] w-[560px] opacity-[0.07] lg:-right-10 lg:top-1/2 lg:-translate-y-1/2"
+      >
+        <VMark animate={false} className="h-full w-full" />
+      </div>
+      <div
+        ref={containerRef}
+        className="relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-[1fr_auto] lg:items-end lg:px-10"
+      >
         <div data-reveal>
           <p className="font-mono-vt text-xs uppercase tracking-[0.28em] text-[#c9a24b]">
             Ready to grow?

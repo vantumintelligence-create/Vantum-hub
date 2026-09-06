@@ -1,9 +1,12 @@
 import { IconArrowRight, IconPlay, IconBarChart, IconBolt, IconPeople } from "./icons";
+import { VMark } from "./v-mark";
+import { useTilt } from "../../hooks/use-tilt";
 import { useParallax } from "../../hooks/use-parallax";
 import { useMagnetic } from "../../hooks/use-magnetic";
 
 export function Hero() {
-  const imageRef = useParallax<HTMLImageElement>(10);
+  const tiltRef = useTilt<HTMLDivElement>(7);
+  const parallaxRef = useParallax<HTMLDivElement>(-8);
   const ctaRef = useMagnetic<HTMLAnchorElement>(0.2);
 
   return (
@@ -11,14 +14,9 @@ export function Hero() {
       id="top"
       className="relative overflow-hidden pt-24 pb-8 lg:pt-40 lg:pb-28 lg:min-h-0"
     >
-      {/* Mobile-only supporting artwork: out of flow, small, contained. Desktop
-          presentation (below) is untouched. */}
-      <img
-        src="/assets/hero-monolith.jpg"
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute right-3 top-20 h-[210px] w-[150px] object-contain opacity-80 [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)] sm:h-[240px] sm:w-[170px] lg:hidden"
-      />
+      <div className="pointer-events-none absolute right-2 top-14 h-[150px] w-[150px] opacity-90 lg:hidden">
+        <VMark className="vt-glow h-full w-full" />
+      </div>
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-2 lg:gap-10 lg:px-10">
         <div className="relative z-10">
@@ -74,18 +72,16 @@ export function Hero() {
           </dl>
         </div>
 
-        {/* Desktop V presentation — unchanged. */}
-        <div className="vt-reveal vt-reveal-2 relative hidden lg:block">
-          <div className="relative aspect-[5/6] overflow-hidden rounded-2xl border border-[#f5f1e8]/10">
-            <img
-              ref={imageRef}
-              src="/assets/hero-monolith.jpg"
-              alt="A glowing gold V monolith rising from a misty dark emerald forest"
-              className="h-full w-full scale-110 object-cover"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0d1712]/40 via-transparent to-transparent" />
+        <div className="vt-reveal vt-reveal-2 relative hidden lg:block" style={{ perspective: "900px" }}>
+          <div ref={parallaxRef} className="relative">
+            <div
+              ref={tiltRef}
+              className="mx-auto aspect-square w-full max-w-md transition-transform duration-100 will-change-transform"
+            >
+              <VMark className="vt-glow h-full w-full" />
+            </div>
           </div>
-          <div className="absolute -right-3 top-8 hidden flex-col gap-2 lg:flex">
+          <div className="absolute -right-2 top-1/2 hidden -translate-y-1/2 flex-col gap-2 lg:flex">
             {["People", "Technology", "Growth", "Without Limits"].map((word) => (
               <span
                 key={word}
