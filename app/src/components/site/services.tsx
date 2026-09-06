@@ -95,6 +95,23 @@ function AutomationMockup() {
   );
 }
 
+const SERVICES = [
+  {
+    icon: IconMegaphone,
+    title: "Ad Creation & Management",
+    subtitle: "High-performing creative. Real results.",
+    checklist: AD_CHECKLIST,
+    Mockup: AdMockup,
+  },
+  {
+    icon: IconGear,
+    title: "AI Automation",
+    subtitle: "Turn more opportunities into revenue, automatically.",
+    checklist: AI_CHECKLIST,
+    Mockup: AutomationMockup,
+  },
+];
+
 export function Services() {
   const containerRef = useSectionReveal<HTMLDivElement>();
 
@@ -116,50 +133,32 @@ export function Services() {
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-          <article data-reveal className="rounded-2xl border border-[#f5f1e8]/10 bg-[#142019] p-8">
-            <span className="grid h-11 w-11 place-items-center rounded-xl border border-[#c9a24b]/30 text-[#c9a24b]">
-              <IconMegaphone className="h-5 w-5" />
-            </span>
-            <h3 className="mt-5 font-display text-xl font-semibold text-[#f5f1e8]">
-              Ad Creation &amp; Management
-            </h3>
-            <p className="mt-1.5 text-sm text-[#f5f1e8]/55">High-performing creative. Real results.</p>
-            <ul className="mt-5 space-y-2.5">
-              {AD_CHECKLIST.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm text-[#f5f1e8]/75">
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#c9a24b]" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="relative mt-7 h-56 rounded-xl bg-[#0d1712]">
-              <AdMockup />
-            </div>
-            <LearnMore />
-          </article>
-
-          <article data-reveal className="rounded-2xl border border-[#f5f1e8]/10 bg-[#142019] p-8 lg:mt-10">
-            <span className="grid h-11 w-11 place-items-center rounded-xl border border-[#c9a24b]/30 text-[#c9a24b]">
-              <IconGear className="h-5 w-5" />
-            </span>
-            <h3 className="mt-5 font-display text-xl font-semibold text-[#f5f1e8]">AI Automation</h3>
-            <p className="mt-1.5 text-sm text-[#f5f1e8]/55">
-              Turn more opportunities into revenue, automatically.
-            </p>
-            <ul className="mt-5 space-y-2.5">
-              {AI_CHECKLIST.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm text-[#f5f1e8]/75">
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#c9a24b]" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="relative mt-7 h-56 rounded-xl bg-[#0d1712]">
-              <AutomationMockup />
-            </div>
-            <LearnMore />
-          </article>
+        <div className="mt-16 space-y-16">
+          {SERVICES.map(({ icon: Icon, title, subtitle, checklist, Mockup }) => (
+            <article
+              key={title}
+              data-reveal
+              className="grid grid-cols-1 gap-8 border-t border-[#f5f1e8]/10 pt-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14"
+            >
+              <div>
+                <Icon className="h-9 w-9 text-[#c9a24b]" />
+                <h3 className="mt-5 font-display text-2xl font-semibold text-[#f5f1e8]">{title}</h3>
+                <p className="mt-1.5 text-sm text-[#f5f1e8]/55">{subtitle}</p>
+                <ul className="mt-6 grid grid-cols-1 gap-x-6 gap-y-2.5 sm:grid-cols-2">
+                  {checklist.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-[#f5f1e8]/75">
+                      <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#c9a24b]" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <LearnMore />
+              </div>
+              <div className="relative h-64 lg:h-full lg:min-h-72">
+                <Mockup />
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
