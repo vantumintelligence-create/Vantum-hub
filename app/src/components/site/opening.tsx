@@ -14,7 +14,7 @@ export function Opening() {
             src="/assets/hero-v-800.webp"
             alt=""
             aria-hidden="true"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-right"
             fetchPriority="high"
           />
         </picture>
