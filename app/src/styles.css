@@ -327,3 +327,33 @@
     transition: none;
   }
 }
+
+/* Beat-paced sequence reveal (transform only, never opacity — stays screenshot-safe). */
+.vt-seq > * {
+  transform: translateY(16px);
+}
+.vt-seq.is-visible > * {
+  animation: vt-seq-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.vt-seq.is-visible > *:nth-child(1) {
+  animation-delay: 0s;
+}
+.vt-seq.is-visible > *:nth-child(2) {
+  animation-delay: 0.75s;
+}
+.vt-seq.is-visible > *:nth-child(3) {
+  animation-delay: 1.5s;
+}
+@keyframes vt-seq-rise {
+  to {
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vt-seq > * {
+    transform: none;
+  }
+  .vt-seq.is-visible > * {
+    animation: none;
+  }
+}
