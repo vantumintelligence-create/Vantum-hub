@@ -28,7 +28,7 @@ export function Opening() {
               Getting their attention is only half the job.
             </h1>
             <p className="mt-6 max-w-[38ch] text-base leading-relaxed text-[#f5f1e8]/65 lg:text-lg">
-              We create the advertising that brings people in. Then we build what happens after
+              We create the advertising that brings people in, and build what happens after
               they click.
             </p>
             <a ref={ctaRef} href="#contact" className="vt-cta group mt-10">

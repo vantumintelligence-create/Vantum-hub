@@ -7,8 +7,6 @@ const MAYBES = [
   "Maybe everything works individually and nothing works together.",
 ];
 
-const BUILD = ["Advertising.", "Websites.", "Follow-up.", "Automation."];
-
 export function Process() {
   const containerRef = useSectionReveal<HTMLDivElement>();
 
@@ -27,19 +25,17 @@ export function Process() {
           ))}
         </div>
 
-        <h2 data-reveal className="vt-display-xl mt-20 max-w-[18ch] text-[#f5f1e8] lg:mt-28">
-          Then we decide what deserves to exist.
+        <h2 data-reveal className="vt-display-xl mt-20 max-w-[20ch] text-[#f5f1e8] lg:mt-28">
+          Not everything needs fixing. We decide what&apos;s worth building.
         </h2>
 
-        <h2 data-reveal className="vt-display-xl mt-20 max-w-[18ch] text-[#f5f1e8] lg:mt-28">
-          Then we build it.
-        </h2>
-        <p data-reveal className="mt-6 font-mono-vt text-sm uppercase tracking-[0.18em] text-[#c9a24b]">
-          {BUILD.join(" ")}
+        <p data-reveal className="mt-8 max-w-[52ch] text-base leading-relaxed text-[#f5f1e8]/55 lg:text-lg">
+          That might be new ads, a new website, better follow-up, or automation stitched
+          underneath all three.
         </p>
 
         <h2 data-reveal className="vt-display-xl mt-20 max-w-[18ch] text-[#f5f1e8] lg:mt-28">
-          Then we watch it work.
+          After that, we watch what actually happens.
         </h2>
         <div data-reveal className="mt-6 space-y-1.5 text-base leading-relaxed text-[#f5f1e8]/55 lg:text-lg">
           <p>What works stays.</p>

@@ -26,21 +26,36 @@ export function ChapterClick() {
           already working harder than it should.
         </p>
 
+        {/* Real interface, not a photo: the actual landing-page pattern, not a generic laptop mockup. */}
         <div
           data-reveal
           className="relative mt-16 overflow-hidden rounded-lg border border-[#f5f1e8]/10 lg:mt-24"
         >
-          <div className="flex h-8 items-center gap-1.5 bg-[#0d1712] px-4">
+          <div className="flex h-8 items-center gap-1.5 bg-[#0a120d] px-4">
             <span className="h-2 w-2 rounded-full bg-[#f5f1e8]/20" />
             <span className="h-2 w-2 rounded-full bg-[#f5f1e8]/20" />
             <span className="h-2 w-2 rounded-full bg-[#f5f1e8]/20" />
+            <span className="ml-3 font-mono-vt text-[9px] tracking-[0.1em] text-[#f5f1e8]/25">
+              yourcompany.com
+            </span>
           </div>
-          <div className="relative aspect-[16/9]">
-            <img
-              src="/assets/interior.jpg"
-              alt="A fast-loading landing page built for a home services client"
-              className="h-full w-full object-cover"
-            />
+          <div className="relative flex aspect-[16/9] flex-col justify-center bg-[#0d1712] p-8 sm:p-12 lg:p-16">
+            <p className="font-mono-vt text-[10px] uppercase tracking-[0.2em] text-[#c9a24b]">
+              Home Services
+            </p>
+            <h3 className="mt-3 max-w-md font-display text-xl font-semibold leading-tight text-[#f5f1e8] sm:text-2xl lg:text-3xl">
+              Same-Day Repairs. No Surprise Charges.
+            </h3>
+            <p className="mt-2 max-w-sm text-sm text-[#f5f1e8]/55">
+              Licensed, insured, and in your neighborhood.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
+              <span className="vt-cta">
+                Get a Free Quote
+                <span className="vt-cta-rule" />
+              </span>
+              <span className="text-sm text-[#f5f1e8]/35">or call (555) 019-2044</span>
+            </div>
           </div>
         </div>
 
