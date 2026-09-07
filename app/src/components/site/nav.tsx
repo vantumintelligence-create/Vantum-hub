@@ -1,14 +1,14 @@
 import { LogoMark } from "./logo-mark";
 
 const LINKS = [
-  { href: "#attention", label: "Work" },
+  { href: "#work", label: "Work" },
   { href: "#process", label: "Process" },
   { href: "#about", label: "About" },
 ];
 
 export function SiteNav() {
   return (
-    <header className="fixed inset-x-0 top-0 z-40 border-b border-[#f5f1e8]/8 bg-[#0d1712]/85 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-40 border-b border-[#f5f1e8]/8 bg-[#0e0d0c]/85 backdrop-blur-md">
       <nav className="mx-auto flex h-20 max-w-[1600px] items-center justify-between px-6 lg:px-14">
         <a href="#top" className="shrink-0">
           <LogoMark />

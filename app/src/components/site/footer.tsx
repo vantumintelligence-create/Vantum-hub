@@ -1,7 +1,7 @@
 import { LogoMark } from "./logo-mark";
 
 const LINKS = [
-  { href: "#attention", label: "Work" },
+  { href: "#work", label: "Work" },
   { href: "#process", label: "Process" },
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },

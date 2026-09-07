@@ -41,12 +41,17 @@ export function Contact() {
           phone: String(form.get("phone") ?? "") || undefined,
           business: String(form.get("business") ?? "") || undefined,
           message: String(form.get("message") ?? "") || undefined,
+          website: String(form.get("website") ?? ""),
         },
       });
       setStatus("success");
-    } catch {
+    } catch (err) {
       setStatus("error");
-      setErrorMsg("Something went wrong sending your request. Please try again.");
+      setErrorMsg(
+        err instanceof Error && err.message
+          ? err.message
+          : "Something went wrong sending your request. Please try again.",
+      );
     }
   }
 
@@ -81,6 +86,14 @@ export function Contact() {
             </div>
           ) : (
             <div className="space-y-7">
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute left-[-9999px] h-0 w-0 opacity-0"
+              />
               <div className="grid grid-cols-1 gap-x-6 gap-y-7 sm:grid-cols-2">
                 <Field label="Name" name="name" required autoComplete="name" />
                 <Field label="Email" name="email" type="email" required autoComplete="email" />
