@@ -39,12 +39,8 @@ export function ChapterSystem() {
         </div>
 
         <h2 data-reveal className="vt-display-mega mt-10 text-[#f5f1e8]">
-          One system, start to finish.
+          Nothing here runs on its own.
         </h2>
-
-        <p data-reveal className="mt-8 max-w-[36ch] text-base leading-relaxed text-[#f5f1e8]/60 lg:text-lg">
-          Every stage feeds the next.
-        </p>
       </div>
     </section>
   );

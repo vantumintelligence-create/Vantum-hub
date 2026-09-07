@@ -105,14 +105,14 @@ export function SelectedWork() {
           <div className="lg:col-span-8 lg:col-start-5">
             <div className="divide-y divide-[#f5f1e8]/10 border-t border-[#f5f1e8]/10">
               {EDFP_STAGES.map((row, i) => (
-                <div key={row.stage} className="flex items-center gap-6 py-4 sm:gap-10">
+                <div key={row.stage} className="flex flex-col gap-1 py-4 sm:flex-row sm:items-center sm:gap-6 lg:gap-10">
                   <span className="font-mono-vt text-[10px] text-[#c9a24b]">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="w-32 shrink-0 font-display text-base font-semibold text-[#f5f1e8] sm:w-40 sm:text-lg">
+                  <span className="font-display text-base font-semibold text-[#f5f1e8] sm:w-32 sm:shrink-0 sm:text-lg lg:w-40">
                     {row.stage}
                   </span>
-                  <span className="text-sm text-[#f5f1e8]/50">{row.detail}</span>
+                  <span className="min-w-0 text-sm text-[#f5f1e8]/50">{row.detail}</span>
                 </div>
               ))}
             </div>
