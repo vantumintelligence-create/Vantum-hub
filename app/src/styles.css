@@ -258,6 +258,7 @@
   line-height: 0.96;
   letter-spacing: -0.01em;
   font-weight: 600;
+  text-transform: uppercase;
 }
 
 .vt-display-xl {
@@ -266,6 +267,7 @@
   line-height: 1.02;
   letter-spacing: -0.005em;
   font-weight: 600;
+  text-transform: uppercase;
 }
 
 .vt-chapter-num {
