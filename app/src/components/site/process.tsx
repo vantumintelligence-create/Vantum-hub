@@ -1,45 +1,33 @@
 import { useSectionReveal } from "../../hooks/use-section-reveal";
 
-const MAYBES = [
-  "Maybe the advertising is weak.",
-  "Maybe leads are already coming in and nobody is following up.",
-  "Maybe the website is making the sale harder.",
-  "Maybe everything works individually and nothing works together.",
+const STEPS = [
+  { n: "01", label: "Find what's not working." },
+  { n: "02", label: "Build only what's needed." },
+  { n: "03", label: "Watch it, then adjust." },
 ];
 
 export function Process() {
   const containerRef = useSectionReveal<HTMLDivElement>();
 
   return (
-    <section id="process" className="border-t border-[#f5f1e8]/8 bg-[#171513] py-24 lg:py-40">
+    <section id="process" className="border-t border-[#f5f1e8]/8 bg-[#171513] py-20 lg:py-24">
       <div ref={containerRef} className="mx-auto max-w-[1600px] px-6 lg:px-14">
-        <h2 data-reveal className="vt-display-xl max-w-[18ch] text-[#f5f1e8]">
-          Before we touch anything, we figure out what&apos;s actually wrong.
-        </h2>
-        <div
-          data-reveal
-          className="mt-8 max-w-[46ch] space-y-1.5 text-base leading-relaxed text-[#f5f1e8]/55 lg:text-lg"
-        >
-          {MAYBES.map((m) => (
-            <p key={m}>{m}</p>
-          ))}
-        </div>
-
-        <h2 data-reveal className="vt-display-xl mt-20 max-w-[20ch] text-[#f5f1e8] lg:mt-28">
-          Not everything needs fixing. We decide what&apos;s worth building.
-        </h2>
-
-        <p data-reveal className="mt-8 max-w-[52ch] text-base leading-relaxed text-[#f5f1e8]/55 lg:text-lg">
-          That might be new ads, a new website, better follow-up, or automation stitched
-          underneath all three.
+        <p data-reveal className="vt-chapter-num">
+          How We Work
         </p>
-
-        <h2 data-reveal className="vt-display-xl mt-20 max-w-[18ch] text-[#f5f1e8] lg:mt-28">
-          After that, we watch what actually happens.
-        </h2>
-        <div data-reveal className="mt-6 space-y-1.5 text-base leading-relaxed text-[#f5f1e8]/55 lg:text-lg">
-          <p>What works stays.</p>
-          <p>What wastes money changes.</p>
+        <div className="mt-10">
+          {STEPS.map((s) => (
+            <div
+              key={s.n}
+              data-reveal
+              className="flex items-baseline gap-6 border-t border-[#f5f1e8]/12 py-6 lg:gap-10 lg:py-8"
+            >
+              <span className="font-mono-vt text-xs text-[#c9a24b]">{s.n}</span>
+              <h3 className="font-display text-xl font-semibold text-[#f5f1e8] lg:text-2xl">
+                {s.label}
+              </h3>
+            </div>
+          ))}
         </div>
       </div>
     </section>

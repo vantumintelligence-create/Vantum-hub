@@ -12,24 +12,24 @@ const OS_LEADS = [
 ];
 
 const EDFP_STAGES = [
-  { stage: "Segment", detail: "Old leads grouped by status and last contact." },
-  { stage: "Re-Engage", detail: "A personal outreach after the gap, not a blast." },
-  { stage: "Requalify", detail: "Confirm the interest is still there before anything else." },
-  { stage: "Route", detail: "Active leads handed back to a person, not left in the system." },
-  { stage: "Book", detail: "Appointment set directly into the calendar." },
+  { stage: "Segment", detail: "Grouped by status." },
+  { stage: "Re-Engage", detail: "Personal, not a blast." },
+  { stage: "Requalify", detail: "Confirm interest first." },
+  { stage: "Route", detail: "Back to a person." },
+  { stage: "Book", detail: "Set on the calendar." },
 ];
 
 export function SelectedWork() {
   const containerRef = useSectionReveal<HTMLDivElement>();
 
   return (
-    <section id="work" className="border-t border-[#f5f1e8]/8 py-24 lg:py-32">
+    <section id="work" className="border-t border-[#f5f1e8]/8 py-20 lg:py-24">
       <div ref={containerRef} className="mx-auto max-w-[1600px] px-6 lg:px-14">
         <p data-reveal className="vt-chapter-num">
           Selected Work
         </p>
 
-        <div data-reveal className="mt-14 lg:mt-20">
+        <div data-reveal className="mt-10 lg:mt-14">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <span className="font-mono-vt text-xs text-[#c9a24b]">001</span>
@@ -37,9 +37,8 @@ export function SelectedWork() {
                 Vantum OS
               </h3>
             </div>
-            <p className="max-w-[38ch] text-sm leading-relaxed text-[#f5f1e8]/55 lg:text-base">
-              The internal platform we run client advertising, automations, and follow-up
-              through. We built it because nothing off the shelf did all three in one place.
+            <p className="max-w-[30ch] text-sm leading-relaxed text-[#f5f1e8]/55 lg:text-base">
+              Where we run campaigns, automations, and follow-up.
             </p>
           </div>
 
@@ -91,15 +90,14 @@ export function SelectedWork() {
           </p>
         </div>
 
-        <div data-reveal className="mt-28 grid grid-cols-1 gap-10 lg:mt-36 lg:grid-cols-12 lg:gap-8">
+        <div data-reveal className="mt-20 grid grid-cols-1 gap-10 lg:mt-24 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
             <span className="font-mono-vt text-xs text-[#c9a24b]">002</span>
             <h3 className="mt-2 max-w-[12ch] font-display text-3xl font-semibold leading-[0.98] text-[#f5f1e8] lg:text-4xl">
               EDFP Conversion System
             </h3>
-            <p className="mt-5 max-w-[34ch] text-sm leading-relaxed text-[#f5f1e8]/55 lg:text-base">
-              A structured follow-up sequence for leads that don&apos;t convert right away, run
-              per industry instead of as one generic script.
+            <p className="mt-5 max-w-[28ch] text-sm leading-relaxed text-[#f5f1e8]/55 lg:text-base">
+              Follow-up for leads that don&apos;t convert right away.
             </p>
             <p className="vt-meta-row mt-8">{EDFP_TAGS.join(" / ")}</p>
           </div>

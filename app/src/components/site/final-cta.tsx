@@ -4,7 +4,7 @@ export function FinalCta() {
   const ctaRef = useMagnetic<HTMLAnchorElement>(0.15);
 
   return (
-    <section className="border-t border-[#f5f1e8]/8 py-28 lg:py-40">
+    <section className="border-t border-[#f5f1e8]/8 py-24 lg:py-32">
       <div className="mx-auto max-w-[1600px] px-6 lg:px-14">
         <h2 className="vt-display-mega max-w-[14ch] text-[#f5f1e8]">
           Have a business worth improving?

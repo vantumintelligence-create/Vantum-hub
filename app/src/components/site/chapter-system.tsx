@@ -10,7 +10,7 @@ export function ChapterSystem() {
   return (
     <section
       id="conversion"
-      className="relative overflow-hidden border-t border-[#f5f1e8]/8 bg-[#0a0908] py-24 lg:py-40"
+      className="relative overflow-hidden border-t border-[#f5f1e8]/8 bg-[#0a0908] py-20 lg:py-28"
     >
       <img
         ref={bgRef}
@@ -42,11 +42,9 @@ export function ChapterSystem() {
           One system, start to finish.
         </h2>
 
-        <div data-reveal className="mt-10 max-w-[42ch] space-y-2 text-base leading-relaxed text-[#f5f1e8]/60 lg:text-lg">
-          <p>Getting attention is one problem.</p>
-          <p>Turning that attention into business is another.</p>
-          <p className="text-[#f5f1e8]">We work on both.</p>
-        </div>
+        <p data-reveal className="mt-8 max-w-[36ch] text-base leading-relaxed text-[#f5f1e8]/60 lg:text-lg">
+          Every stage feeds the next.
+        </p>
       </div>
     </section>
   );
