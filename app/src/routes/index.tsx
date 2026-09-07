@@ -1,14 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { SiteNav } from "../components/site/nav";
-import { Hero } from "../components/site/hero";
-import { TrustStrip } from "../components/site/trust-strip";
-import { Services } from "../components/site/services";
+import { JourneyIndicator } from "../components/site/journey-indicator";
+import { Opening } from "../components/site/opening";
+import { ChapterAttention } from "../components/site/chapter-attention";
+import { ChapterClick } from "../components/site/chapter-click";
+import { ChapterResponse } from "../components/site/chapter-response";
+import { ChapterSystem } from "../components/site/chapter-system";
+import { Capabilities } from "../components/site/capabilities";
 import { Process } from "../components/site/process";
-import { Results } from "../components/site/results";
 import { About } from "../components/site/about";
 import { Industries } from "../components/site/industries";
-import { CtaBand } from "../components/site/cta-band";
+import { FinalCta } from "../components/site/final-cta";
 import { Contact } from "../components/site/contact";
 import { Footer } from "../components/site/footer";
 
@@ -20,15 +23,18 @@ function Index() {
   return (
     <div className="min-h-dvh bg-[#0d1712]">
       <SiteNav />
+      <JourneyIndicator />
       <main>
-        <Hero />
-        <TrustStrip />
-        <Services />
+        <Opening />
+        <ChapterAttention />
+        <ChapterClick />
+        <ChapterResponse />
+        <ChapterSystem />
+        <Capabilities />
         <Process />
-        <Results />
         <About />
         <Industries />
-        <CtaBand />
+        <FinalCta />
         <Contact />
       </main>
       <Footer />
