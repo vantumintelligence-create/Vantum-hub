@@ -1,10 +1,8 @@
 import { LogoMark } from "./logo-mark";
 
 const LINKS = [
-  { href: "#top", label: "Home" },
-  { href: "#services", label: "Services" },
+  { href: "#attention", label: "Work" },
   { href: "#process", label: "Process" },
-  { href: "#results", label: "Results" },
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
 ];
@@ -37,20 +35,20 @@ function YouTubeIcon() {
 export function Footer() {
   return (
     <footer className="border-t border-[#f5f1e8]/8 py-12">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-6 lg:flex-row lg:justify-between lg:px-10">
-        <a href="#top">
-          <LogoMark />
-        </a>
-        <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2">
-          {LINKS.map((l) => (
-            <li key={l.href}>
-              <a href={l.href} className="text-sm text-[#f5f1e8]/60 transition-colors hover:text-[#f5f1e8]">
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <div className="flex items-center gap-5">
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-14">
+        <div className="flex flex-col items-center gap-8 lg:flex-row lg:justify-between">
+          <a href="#top">
+            <LogoMark />
+          </a>
+          <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2">
+            {LINKS.map((l) => (
+              <li key={l.href}>
+                <a href={l.href} className="text-sm text-[#f5f1e8]/60 transition-colors hover:text-[#f5f1e8]">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
           <div className="flex items-center gap-4 text-[#f5f1e8]/60">
             <a href="https://instagram.com" aria-label="Instagram" className="transition-colors hover:text-[#c9a24b]">
               <InstagramIcon />
@@ -62,8 +60,13 @@ export function Footer() {
               <YouTubeIcon />
             </a>
           </div>
-          <span className="hidden font-mono-vt text-[10px] uppercase tracking-[0.24em] text-[#f5f1e8]/35 lg:block">
+        </div>
+        <div className="mt-10 flex flex-col items-center gap-2 border-t border-[#f5f1e8]/8 pt-6 text-center lg:flex-row lg:justify-between lg:text-left">
+          <span className="font-mono-vt text-[10px] uppercase tracking-[0.24em] text-[#f5f1e8]/35">
             A Smarter Tomorrow.
+          </span>
+          <span className="font-mono-vt text-[10px] uppercase tracking-[0.2em] text-[#f5f1e8]/25">
+            Built with OpenAI, Anthropic, Google, and Meta.
           </span>
         </div>
       </div>
