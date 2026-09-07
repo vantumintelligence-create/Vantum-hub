@@ -25,11 +25,10 @@ export function Opening() {
         <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-14">
           <div className="max-w-[15ch]">
             <h1 className="vt-display-mega text-[#f5f1e8]">
-              Getting their attention is only half the job.
+              Advertising, automation, web.
             </h1>
-            <p className="mt-6 max-w-[38ch] text-base leading-relaxed text-[#f5f1e8]/65 lg:text-lg">
-              We create the advertising that brings people in, and build what happens after
-              they click.
+            <p className="mt-6 max-w-[30ch] text-base leading-relaxed text-[#f5f1e8]/65 lg:text-lg">
+              Built together, not sold separately.
             </p>
             <a ref={ctaRef} href="#contact" className="vt-cta group mt-10">
               Start a Project

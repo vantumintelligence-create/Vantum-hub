@@ -6,7 +6,7 @@ export function ChapterAttention() {
   const containerRef = useSectionReveal<HTMLDivElement>();
 
   return (
-    <section id="attention" className="border-t border-[#f5f1e8]/8 py-24 lg:py-40">
+    <section id="attention" className="border-t border-[#f5f1e8]/8 py-20 lg:py-28">
       <div ref={containerRef} className="mx-auto max-w-[1600px] px-6 lg:px-14">
         <p data-reveal className="vt-chapter-num">
           01 / Attention
@@ -14,19 +14,13 @@ export function ChapterAttention() {
         <h2 data-reveal className="vt-display-xl mt-6 max-w-[16ch] text-[#f5f1e8]">
           Nobody buys from a business they&apos;ve never heard of.
         </h2>
-        <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
-          <p data-reveal className="max-w-[42ch] text-base leading-relaxed text-[#f5f1e8]/60 lg:text-lg">
-            Being good at the work and being known for it are two different problems.
-          </p>
-          <p data-reveal className="max-w-[42ch] text-base leading-relaxed text-[#f5f1e8]/60 lg:text-lg">
-            We create the advertising, run the campaigns, test what works, and change what
-            doesn&apos;t.
-          </p>
-        </div>
+        <p data-reveal className="mt-10 max-w-[36ch] text-base leading-relaxed text-[#f5f1e8]/60 lg:text-lg">
+          We build and run the advertising.
+        </p>
 
         <div
           data-reveal
-          className="relative mt-16 aspect-[16/9] overflow-hidden lg:mt-24 lg:aspect-[21/9]"
+          className="relative mt-12 aspect-[16/9] overflow-hidden lg:mt-16 lg:aspect-[21/9]"
         >
           <img
             src="/assets/interior.jpg"

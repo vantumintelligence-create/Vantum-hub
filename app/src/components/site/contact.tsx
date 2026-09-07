@@ -56,7 +56,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="border-t border-[#f5f1e8]/8 py-24 lg:py-32">
+    <section id="contact" className="border-t border-[#f5f1e8]/8 py-20 lg:py-24">
       <div
         ref={containerRef}
         className="mx-auto grid max-w-[1600px] grid-cols-1 gap-14 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:px-14"

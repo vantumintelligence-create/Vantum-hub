@@ -19,7 +19,7 @@ export function ChapterResponse() {
   const { ref: seqRef, visible } = useSequenceReveal<HTMLDivElement>();
 
   return (
-    <section id="response" className="border-t border-[#f5f1e8]/8 py-24 lg:py-40">
+    <section id="response" className="border-t border-[#f5f1e8]/8 py-20 lg:py-28">
       <div ref={containerRef} className="mx-auto max-w-[1600px] px-6 lg:px-14">
         <p data-reveal className="vt-chapter-num">
           03 / The Response
@@ -31,13 +31,11 @@ export function ChapterResponse() {
           <p className="vt-display-xl text-[#c9a24b]">A text went out anyway.</p>
         </div>
 
-        <p className="mt-10 max-w-[46ch] text-base leading-relaxed text-[#f5f1e8]/60 lg:text-lg">
-          A lead shouldn&apos;t have to wait until somebody checks the inbox. Calls, forms, texts,
-          follow-ups, and old customers: we build the systems that keep working while you&apos;re
-          busy running the business.
+        <p className="mt-10 max-w-[36ch] text-base leading-relaxed text-[#f5f1e8]/60 lg:text-lg">
+          The system answers when nobody else does.
         </p>
 
-        <div data-reveal className="mt-16 lg:mt-24">
+        <div data-reveal className="mt-12 lg:mt-16">
           <div className="flex flex-col gap-0 lg:flex-row lg:items-stretch">
             {FLOW.map((step, i) => (
               <div
