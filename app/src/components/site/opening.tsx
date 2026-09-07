@@ -31,7 +31,7 @@ export function Opening() {
               Built together, not sold separately.
             </p>
             <a ref={ctaRef} href="#contact" className="vt-cta group mt-10">
-              Start a Project
+              Book a Strategy Call
               <span className="vt-cta-rule" />
               <svg
                 className="vt-cta-arrow h-3.5 w-3.5"
@@ -43,6 +43,9 @@ export function Opening() {
                 <path d="M2 8h11M8 3l5 5-5 5" />
               </svg>
             </a>
+            <p className="mt-3 font-mono-vt text-[10px] uppercase tracking-[0.2em] text-[#f5f1e8]/35">
+              100% Free
+            </p>
           </div>
         </div>
       </div>

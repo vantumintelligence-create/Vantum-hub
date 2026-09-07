@@ -116,7 +116,7 @@ export function Contact() {
                 disabled={status === "loading"}
                 className="vt-cta group mt-2 disabled:opacity-60"
               >
-                {status === "loading" ? "Sending..." : "Start a Project"}
+                {status === "loading" ? "Sending..." : "Book a Strategy Call"}
                 <span className="vt-cta-rule" />
                 <svg
                   className="vt-cta-arrow h-3.5 w-3.5"
@@ -128,6 +128,9 @@ export function Contact() {
                   <path d="M2 8h11M8 3l5 5-5 5" />
                 </svg>
               </button>
+              <p className="mt-2 font-mono-vt text-[10px] uppercase tracking-[0.2em] text-[#f5f1e8]/35">
+                100% Free
+              </p>
             </div>
           )}
         </form>

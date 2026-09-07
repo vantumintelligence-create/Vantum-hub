@@ -26,7 +26,7 @@ export function SiteNav() {
           ))}
         </ul>
         <a href="#contact" className="vt-cta group shrink-0">
-          Start a Project
+          Book a Strategy Call
           <span className="vt-cta-rule hidden sm:block" />
         </a>
       </nav>
