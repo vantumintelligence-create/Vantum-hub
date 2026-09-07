@@ -17,7 +17,7 @@ declare const __HF_DESIGN_INSPECTOR__: boolean;
 
 const DEFAULT_TITLE = "Vantum Intelligence";
 const DEFAULT_DESCRIPTION =
-  "Growth systems for modern businesses: high-performing ads and AI automation, all in one place.";
+  "Advertising, automation, and web work for local and regional businesses, built as one connected system instead of separate vendors.";
 
 type AppMeta = {
   og_title?: string | null;
@@ -58,7 +58,7 @@ function buildHead(meta: AppMeta) {
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title },
       { name: "description", content: description },
-      { name: "theme-color", content: "#0d1712" },
+      { name: "theme-color", content: "#0e0d0c" },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
@@ -91,7 +91,7 @@ function buildHead(meta: AppMeta) {
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-dvh flex-col items-center justify-center gap-4 bg-[#0d1712] px-4 text-center text-[#f5f1e8]">
+    <div className="flex min-h-dvh flex-col items-center justify-center gap-4 bg-[#0e0d0c] px-4 text-center text-[#f5f1e8]">
       <span className="font-mono-vt text-xs uppercase tracking-[0.2em] text-[#c9a24b]">404</span>
       <h1 className="font-display text-3xl font-semibold tracking-tight">Page not found</h1>
       <p className="max-w-sm text-sm text-[#f5f1e8]/60">
@@ -99,7 +99,7 @@ function NotFoundComponent() {
       </p>
       <Link
         to="/"
-        className="mt-2 rounded-md bg-[#c9a24b] px-5 py-2.5 text-sm font-medium text-[#0d1712] transition-colors hover:bg-[#e3bd6c]"
+        className="mt-2 rounded-md bg-[#c9a24b] px-5 py-2.5 text-sm font-medium text-[#0e0d0c] transition-colors hover:bg-[#e3bd6c]"
       >
         Go home
       </Link>
@@ -115,7 +115,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-dvh flex-col items-center justify-center gap-4 bg-[#0d1712] px-4 text-center text-[#f5f1e8]">
+    <div className="flex min-h-dvh flex-col items-center justify-center gap-4 bg-[#0e0d0c] px-4 text-center text-[#f5f1e8]">
       <h1 className="font-display text-2xl font-semibold tracking-tight">This page did not load</h1>
       <p className="max-w-sm text-sm text-[#f5f1e8]/60">
         Something went wrong on our end. You can try refreshing or head back home.
@@ -126,7 +126,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             router.invalidate();
             reset();
           }}
-          className="rounded-md bg-[#c9a24b] px-5 py-2.5 text-sm font-medium text-[#0d1712] transition-colors hover:bg-[#e3bd6c]"
+          className="rounded-md bg-[#c9a24b] px-5 py-2.5 text-sm font-medium text-[#0e0d0c] transition-colors hover:bg-[#e3bd6c]"
         >
           Try again
         </button>
@@ -155,7 +155,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="bg-[#0d1712] text-[#f5f1e8] antialiased">
+      <body className="bg-[#0e0d0c] text-[#f5f1e8] antialiased">
         {children}
         <Scripts />
       </body>

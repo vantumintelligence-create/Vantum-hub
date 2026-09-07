@@ -8,9 +8,9 @@ import { ChapterClick } from "../components/site/chapter-click";
 import { ChapterResponse } from "../components/site/chapter-response";
 import { ChapterSystem } from "../components/site/chapter-system";
 import { Capabilities } from "../components/site/capabilities";
+import { SelectedWork } from "../components/site/selected-work";
 import { Process } from "../components/site/process";
 import { About } from "../components/site/about";
-import { Industries } from "../components/site/industries";
 import { FinalCta } from "../components/site/final-cta";
 import { Contact } from "../components/site/contact";
 import { Footer } from "../components/site/footer";
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="min-h-dvh bg-[#0d1712]">
+    <div className="min-h-dvh bg-[#0e0d0c]">
       <SiteNav />
       <JourneyIndicator />
       <main>
@@ -31,9 +31,9 @@ function Index() {
         <ChapterResponse />
         <ChapterSystem />
         <Capabilities />
+        <SelectedWork />
         <Process />
         <About />
-        <Industries />
         <FinalCta />
         <Contact />
       </main>

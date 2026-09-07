@@ -4,20 +4,40 @@ import { z } from "zod";
 import { bindings } from "../bindings.server";
 
 const leadInput = z.object({
-  name: z.string().min(1).max(120),
-  email: z.string().email().max(200),
-  phone: z.string().max(40).optional(),
-  business: z.string().max(160).optional(),
-  message: z.string().max(2000).optional(),
+  name: z.string().trim().min(1).max(120),
+  email: z.string().trim().email().max(200),
+  phone: z.string().trim().max(40).optional(),
+  business: z.string().trim().max(160).optional(),
+  message: z.string().trim().max(2000).optional(),
+  // Honeypot: a hidden field real visitors never fill in. Bots that
+  // autofill every input trip it, so we quietly no-op instead of writing a
+  // row — left unrestricted here so a filled-in value doesn't fail
+  // validation and tip off what the field is for.
+  website: z.string().max(500).optional(),
 });
+
+const RATE_LIMIT_WINDOW_MS = 60_000;
 
 export const submitLead = createServerFn({ method: "POST" })
   .inputValidator(leadInput)
   .handler(async ({ data }) => {
+    if (data.website) {
+      return { id: crypto.randomUUID() };
+    }
+
     const { DB } = bindings();
     if (!DB) {
       throw new Error("Lead storage is not available right now.");
     }
+
+    const cutoff = new Date(Date.now() - RATE_LIMIT_WINDOW_MS).toISOString();
+    const recent = await DB.prepare(`SELECT id FROM leads WHERE email = ?1 AND created_at > ?2 LIMIT 1`)
+      .bind(data.email, cutoff)
+      .first<{ id: string }>();
+    if (recent) {
+      throw new Error("We already have your request and are on it — no need to send another.");
+    }
+
     const id = crypto.randomUUID();
     await DB.prepare(
       `INSERT INTO leads (id, name, email, phone, business, message, created_at)
