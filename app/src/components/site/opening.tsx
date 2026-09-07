@@ -18,7 +18,7 @@ export function Opening() {
             fetchPriority="high"
           />
         </picture>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0d1712] via-[#0d1712]/55 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0e0d0c] via-[#0e0d0c]/55 to-transparent" />
       </div>
 
       <div className="relative flex min-h-[92svh] items-end pb-20 pt-32 lg:min-h-screen lg:items-center lg:pb-0">

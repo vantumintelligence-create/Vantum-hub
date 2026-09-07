@@ -11,7 +11,7 @@ export function Process() {
   const containerRef = useSectionReveal<HTMLDivElement>();
 
   return (
-    <section id="process" className="border-t border-[#f5f1e8]/8 bg-[#121d17] py-24 lg:py-40">
+    <section id="process" className="border-t border-[#f5f1e8]/8 bg-[#171513] py-24 lg:py-40">
       <div ref={containerRef} className="mx-auto max-w-[1600px] px-6 lg:px-14">
         <h2 data-reveal className="vt-display-xl max-w-[18ch] text-[#f5f1e8]">
           Before we touch anything, we figure out what&apos;s actually wrong.
