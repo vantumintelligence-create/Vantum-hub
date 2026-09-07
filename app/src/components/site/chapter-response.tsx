@@ -25,16 +25,13 @@ export function ChapterResponse() {
           03 / The Response
         </p>
 
-        <div
-          ref={seqRef}
-          className={`vt-seq mt-8 space-y-2 ${visible ? "is-visible" : ""}`}
-        >
-          <p className="vt-display-xl text-[#f5f1e8]/35">They called.</p>
-          <p className="vt-display-xl text-[#f5f1e8]/55">You missed it.</p>
-          <p className="vt-display-xl text-[#c9a24b]">Vantum didn&apos;t.</p>
+        <div ref={seqRef} className={`vt-seq mt-8 space-y-2 ${visible ? "is-visible" : ""}`}>
+          <p className="vt-display-xl text-[#f5f1e8]/35">A customer called at 9:40pm.</p>
+          <p className="vt-display-xl text-[#f5f1e8]/55">No one picked up.</p>
+          <p className="vt-display-xl text-[#c9a24b]">A text went out anyway.</p>
         </div>
 
-        <p data-reveal className="mt-10 max-w-[46ch] text-base leading-relaxed text-[#f5f1e8]/60 lg:text-lg">
+        <p className="mt-10 max-w-[46ch] text-base leading-relaxed text-[#f5f1e8]/60 lg:text-lg">
           A lead shouldn&apos;t have to wait until somebody checks the inbox. Calls, forms, texts,
           follow-ups, and old customers: we build the systems that keep working while you&apos;re
           busy running the business.
@@ -43,7 +40,10 @@ export function ChapterResponse() {
         <div data-reveal className="mt-16 lg:mt-24">
           <div className="flex flex-col gap-0 lg:flex-row lg:items-stretch">
             {FLOW.map((step, i) => (
-              <div key={step} className="relative flex-1 border-t border-[#f5f1e8]/12 py-5 lg:border-l lg:border-t-0 lg:px-6 lg:py-0 lg:first:border-l-0">
+              <div
+                key={step}
+                className="relative flex-1 border-t border-[#f5f1e8]/12 py-5 lg:border-l lg:border-t-0 lg:px-6 lg:py-0 lg:first:border-l-0"
+              >
                 <span className="font-mono-vt text-[10px] uppercase tracking-[0.2em] text-[#c9a24b]">
                   {String(i + 1).padStart(2, "0")}
                 </span>

@@ -12,11 +12,11 @@ export function ChapterAttention() {
           01 / Attention
         </p>
         <h2 data-reveal className="vt-display-xl mt-6 max-w-[16ch] text-[#f5f1e8]">
-          First, they have to notice you.
+          Nobody buys from a business they&apos;ve never heard of.
         </h2>
         <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
           <p data-reveal className="max-w-[42ch] text-base leading-relaxed text-[#f5f1e8]/60 lg:text-lg">
-            Great businesses get ignored every day because nobody knows they exist.
+            Being good at the work and being known for it are two different problems.
           </p>
           <p data-reveal className="max-w-[42ch] text-base leading-relaxed text-[#f5f1e8]/60 lg:text-lg">
             We create the advertising, run the campaigns, test what works, and change what
@@ -33,7 +33,7 @@ export function ChapterAttention() {
             alt="Advertising creative built for a home services client"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0d1712] via-[#0d1712]/10 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0e0d0c] via-[#0e0d0c]/10 to-transparent" />
           <div className="absolute inset-x-6 bottom-6 lg:inset-x-14 lg:bottom-10">
             <p className="font-display text-xl font-semibold text-[#f5f1e8] lg:text-3xl">
               Transform Your Space

@@ -6,18 +6,11 @@ export function ChapterClick() {
   const containerRef = useSectionReveal<HTMLDivElement>();
 
   return (
-    <section id="experience" className="border-t border-[#f5f1e8]/8 bg-[#121d17] py-24 lg:py-40">
+    <section id="experience" className="border-t border-[#f5f1e8]/8 bg-[#171513] py-24 lg:py-40">
       <div ref={containerRef} className="mx-auto max-w-[1600px] px-6 lg:px-14">
         <p data-reveal className="vt-chapter-num">
           02 / The Click
         </p>
-        <div
-          data-reveal
-          className="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-1 font-mono-vt text-xs uppercase tracking-[0.2em] text-[#f5f1e8]/40"
-        >
-          <span>They saw you.</span>
-          <span className="text-[#c9a24b]">They clicked.</span>
-        </div>
         <h2 data-reveal className="vt-display-xl mt-6 max-w-[16ch] text-[#f5f1e8]">
           Where you send them matters.
         </h2>
@@ -31,7 +24,7 @@ export function ChapterClick() {
           data-reveal
           className="relative mt-16 overflow-hidden rounded-lg border border-[#f5f1e8]/10 lg:mt-24"
         >
-          <div className="flex h-8 items-center gap-1.5 bg-[#0a120d] px-4">
+          <div className="flex h-8 items-center gap-1.5 bg-[#0a0908] px-4">
             <span className="h-2 w-2 rounded-full bg-[#f5f1e8]/20" />
             <span className="h-2 w-2 rounded-full bg-[#f5f1e8]/20" />
             <span className="h-2 w-2 rounded-full bg-[#f5f1e8]/20" />
@@ -39,7 +32,7 @@ export function ChapterClick() {
               yourcompany.com
             </span>
           </div>
-          <div className="relative flex aspect-[16/9] flex-col justify-center bg-[#0d1712] p-8 sm:p-12 lg:p-16">
+          <div className="relative flex aspect-[16/9] flex-col justify-center bg-[#0e0d0c] p-8 sm:p-12 lg:p-16">
             <p className="font-mono-vt text-[10px] uppercase tracking-[0.2em] text-[#c9a24b]">
               Home Services
             </p>

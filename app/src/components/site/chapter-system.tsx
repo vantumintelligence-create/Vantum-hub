@@ -10,7 +10,7 @@ export function ChapterSystem() {
   return (
     <section
       id="conversion"
-      className="relative overflow-hidden border-t border-[#f5f1e8]/8 bg-[#0a120d] py-24 lg:py-40"
+      className="relative overflow-hidden border-t border-[#f5f1e8]/8 bg-[#0a0908] py-24 lg:py-40"
     >
       <img
         ref={bgRef}
@@ -19,7 +19,7 @@ export function ChapterSystem() {
         aria-hidden="true"
         className="pointer-events-none absolute -right-1/4 top-0 h-full w-full max-w-none object-cover opacity-[0.28] lg:right-0 lg:w-2/3"
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0a120d] via-[#0a120d]/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0a0908] via-[#0a0908]/70 to-transparent" />
 
       <div ref={containerRef} className="relative mx-auto max-w-[1600px] px-6 lg:px-14">
         <p data-reveal className="vt-chapter-num">
@@ -39,7 +39,7 @@ export function ChapterSystem() {
         </div>
 
         <h2 data-reveal className="vt-display-mega mt-10 text-[#f5f1e8]">
-          That&apos;s Vantum.
+          One system, start to finish.
         </h2>
 
         <div data-reveal className="mt-10 max-w-[42ch] space-y-2 text-base leading-relaxed text-[#f5f1e8]/60 lg:text-lg">
