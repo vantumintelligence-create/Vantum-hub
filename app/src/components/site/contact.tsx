@@ -1,7 +1,6 @@
 import { useState, type FormEvent } from "react";
 
 import { submitLead } from "../../lib/api/leads.functions";
-import { IconArrowRight } from "./icons";
 import { useSectionReveal } from "../../hooks/use-section-reveal";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -20,7 +19,6 @@ function ContactRow({ label, value, href }: { label: string; value: string; href
           {value}
         </span>
       </span>
-      <IconArrowRight className="h-4 w-4 shrink-0 text-[#f5f1e8]/30 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#c9a24b]" />
     </a>
   );
 }
@@ -54,14 +52,16 @@ export function Contact() {
 
   return (
     <section id="contact" className="border-t border-[#f5f1e8]/8 py-24 lg:py-32">
-      <div ref={containerRef} className="mx-auto grid max-w-7xl grid-cols-1 gap-14 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:px-10">
+      <div
+        ref={containerRef}
+        className="mx-auto grid max-w-[1600px] grid-cols-1 gap-14 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:px-14"
+      >
         <div data-reveal>
-          <h2 className="font-display text-3xl font-semibold tracking-tight text-[#f5f1e8] md:text-4xl">
-            Tell us about your business.
+          <h2 className="vt-display-xl max-w-[14ch] text-[#f5f1e8]">
+            Tell us what you&apos;re working with.
           </h2>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-[#f5f1e8]/55">
-            Share a few details and we will follow up with a plan for your ads and automation,
-            no obligation. Prefer to skip the form? Reach us directly below.
+            A few details now, a real conversation next. No obligation, no generic sales script.
           </p>
 
           <div data-reveal className="mt-10 border-t border-[#f5f1e8]/10">
@@ -73,10 +73,10 @@ export function Contact() {
 
         <form data-reveal onSubmit={handleSubmit} noValidate>
           {status === "success" ? (
-            <div className="rounded-2xl border border-[#c9a24b]/30 bg-[#142019] p-10 text-center">
-              <p className="font-display text-lg font-semibold text-[#f5f1e8]">Request received.</p>
+            <div className="border-t border-[#c9a24b]/40 pt-8">
+              <p className="font-display text-lg font-semibold text-[#f5f1e8]">Got it.</p>
               <p className="mt-2 text-sm text-[#f5f1e8]/60">
-                We will reach out shortly to schedule your strategy call.
+                We&apos;ll be in touch to set up your strategy call.
               </p>
             </div>
           ) : (
@@ -88,10 +88,10 @@ export function Contact() {
                 <Field label="Business name" name="business" autoComplete="organization" />
               </div>
               <Field
-                label="What are you looking to grow?"
+                label="What's not working right now?"
                 name="message"
                 as="textarea"
-                placeholder="More leads, faster follow-up, both..."
+                placeholder="Slow follow-up, weak ads, both..."
               />
               {status === "error" && (
                 <p className="text-sm text-[#e3a06c]" role="alert">
@@ -101,11 +101,19 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="group relative mt-2 inline-flex items-center gap-2 overflow-hidden rounded-md bg-[#c9a24b] px-7 py-3.5 text-sm font-medium text-[#0d1712] transition-transform active:translate-y-px active:scale-[0.98] disabled:opacity-60"
+                className="vt-cta group mt-2 disabled:opacity-60"
               >
-                <span className="pointer-events-none absolute left-1 top-1 h-2.5 w-2.5 -translate-x-2 -translate-y-2 border-l-2 border-t-2 border-[#0d1712]/0 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:border-[#0d1712]/40" />
-                <span className="pointer-events-none absolute bottom-1 right-1 h-2.5 w-2.5 translate-x-2 translate-y-2 border-b-2 border-r-2 border-[#0d1712]/0 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:border-[#0d1712]/40" />
-                {status === "loading" ? "Sending..." : "Send Message"}
+                {status === "loading" ? "Sending..." : "Start a Project"}
+                <span className="vt-cta-rule" />
+                <svg
+                  className="vt-cta-arrow h-3.5 w-3.5"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                >
+                  <path d="M2 8h11M8 3l5 5-5 5" />
+                </svg>
               </button>
             </div>
           )}
