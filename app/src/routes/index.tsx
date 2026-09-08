@@ -11,7 +11,6 @@ import { Capabilities } from "../components/site/capabilities";
 import { SelectedWork } from "../components/site/selected-work";
 import { Process } from "../components/site/process";
 import { About } from "../components/site/about";
-import { FinalCta } from "../components/site/final-cta";
 import { Contact } from "../components/site/contact";
 import { Footer } from "../components/site/footer";
 
@@ -34,7 +33,6 @@ function Index() {
         <SelectedWork />
         <Process />
         <About />
-        <FinalCta />
         <Contact />
       </main>
       <Footer />
