@@ -53,8 +53,8 @@ export function ChapterClick() {
           A bad landing page wastes a good ad.
         </p>
 
-        <div data-reveal className="mt-14 flex items-center gap-4 lg:mt-20">
-          <div className="w-28 shrink-0 opacity-60 lg:w-36">
+        <div data-reveal className="mt-14 flex items-end gap-5 lg:mt-20">
+          <div className="w-[52%] shrink-0 opacity-70 sm:w-[42%] lg:w-[38%]">
             <BrowserFrame
               src="/assets/landing-bad.webp"
               alt="A cluttered, confusing landing page with competing calls to action"
