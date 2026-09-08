@@ -51,27 +51,28 @@ export function ChapterAttention() {
   const containerRef = useSectionReveal<HTMLDivElement>();
 
   return (
-    <section id="attention" className="relative overflow-hidden border-t border-[#f5f1e8]/8 py-20 lg:py-28">
+    <section id="attention" className="relative overflow-hidden border-t border-[#f5f1e8]/8 py-24 lg:py-36">
       <CrackLines variant={3} />
       <div ref={containerRef} className="relative mx-auto max-w-[1600px] px-6 lg:px-14">
         <p data-reveal className="vt-chapter-num">
-          01 / Attention
+          01 / Advertising
         </p>
 
-        <div className="mt-6 grid grid-cols-1 gap-16 lg:grid-cols-12 lg:items-center lg:gap-8">
-          <div className="lg:col-span-6">
-            <h2 data-reveal className="vt-display-xl max-w-[16ch] text-[#f5f1e8]">
+        <div className="relative mt-8 lg:min-h-[30rem]">
+          <div data-reveal className="relative z-10 max-w-[20ch] lg:max-w-[16ch]">
+            <h2 className="vt-display-xl text-[#f5f1e8]">
               Nobody buys from a business they&apos;ve never heard of.
             </h2>
-            <p data-reveal className="mt-8 max-w-[36ch] text-base leading-relaxed text-[#f5f1e8]/60 lg:text-lg">
+            <p className="mt-8 max-w-[34ch] text-base leading-relaxed text-[#f5f1e8]/60 lg:text-lg">
               We build and run the advertising.
             </p>
-            <p data-reveal className="vt-meta-row mt-10">
-              {CAPABILITIES.join(" / ")}
-            </p>
+            <p className="vt-meta-row mt-10">{CAPABILITIES.join(" / ")}</p>
           </div>
 
-          <div data-reveal className="relative mt-6 aspect-[4/3] lg:col-span-6 lg:col-start-7 lg:mt-0">
+          <div
+            data-reveal
+            className="relative mt-14 aspect-[4/3] lg:absolute lg:right-[-3.5rem] lg:top-1/2 lg:mt-0 lg:aspect-[16/10] lg:w-[56%] lg:-translate-y-1/2"
+          >
             <AdMockup />
           </div>
         </div>

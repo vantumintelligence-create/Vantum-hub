@@ -48,7 +48,7 @@ export function ChapterResponse() {
       <CrackLines variant={2} />
       <div ref={containerRef} className="relative mx-auto max-w-[1600px] px-6 lg:px-14">
         <p data-reveal className="vt-chapter-num">
-          03 / The Response
+          02 / Automation
         </p>
 
         <div className="mt-6 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">

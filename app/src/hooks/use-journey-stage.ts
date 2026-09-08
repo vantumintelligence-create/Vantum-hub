@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 
 const STAGES = [
-  { id: "attention", label: "Attention" },
-  { id: "experience", label: "Experience" },
-  { id: "response", label: "Response" },
-  { id: "conversion", label: "Conversion" },
+  { id: "attention", label: "Advertising" },
+  { id: "response", label: "Automation" },
+  { id: "experience", label: "Web" },
 ];
 
 export function useJourneyStage() {

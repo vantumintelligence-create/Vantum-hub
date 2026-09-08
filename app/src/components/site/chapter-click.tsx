@@ -39,12 +39,12 @@ export function ChapterClick() {
   return (
     <section
       id="experience"
-      className="relative overflow-hidden border-t border-[#f5f1e8]/8 bg-[#171513] py-20 lg:py-28"
+      className="relative overflow-hidden border-t border-[#f5f1e8]/8 bg-[#171513] py-24 lg:py-36"
     >
       <CrackLines variant={1} />
       <div ref={containerRef} className="relative mx-auto max-w-[1600px] px-6 lg:px-14">
         <p data-reveal className="vt-chapter-num">
-          02 / The Click
+          03 / Web
         </p>
         <h2 data-reveal className="vt-display-xl mt-6 max-w-[16ch] text-[#f5f1e8]">
           Where you send them matters.
@@ -53,13 +53,21 @@ export function ChapterClick() {
           A bad landing page wastes a good ad.
         </p>
 
-        <div data-reveal className="mt-12 grid grid-cols-1 gap-6 lg:mt-16 lg:grid-cols-2 lg:gap-8">
-          <BrowserFrame
-            src="/assets/landing-bad.webp"
-            alt="A cluttered, confusing landing page with competing calls to action"
-            label="Bad"
-            tone="bad"
-          />
+        <div data-reveal className="mt-14 flex items-center gap-4 lg:mt-20">
+          <div className="w-28 shrink-0 opacity-60 lg:w-36">
+            <BrowserFrame
+              src="/assets/landing-bad.webp"
+              alt="A cluttered, confusing landing page with competing calls to action"
+              label="Bad"
+              tone="bad"
+            />
+          </div>
+          <span className="font-mono-vt text-[10px] uppercase tracking-[0.2em] text-[#f5f1e8]/30">
+            vs.
+          </span>
+        </div>
+
+        <div data-reveal className="relative mt-6 lg:mt-8 lg:mr-[-3.5rem] lg:w-[80%]">
           <BrowserFrame
             src="/assets/landing-good.webp"
             alt="A clean, focused landing page with one clear call to action"

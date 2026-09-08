@@ -9,8 +9,8 @@ export function ChapterSystem() {
 
   return (
     <section
-      id="conversion"
-      className="relative overflow-hidden border-t border-[#f5f1e8]/8 bg-[#0a0908] py-20 lg:py-28"
+      id="interruption"
+      className="relative overflow-hidden border-t border-[#f5f1e8]/8 bg-[#0a0908] py-24 lg:py-40"
     >
       <img
         ref={bgRef}
@@ -22,10 +22,6 @@ export function ChapterSystem() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0a0908] via-[#0a0908]/70 to-transparent" />
 
       <div ref={containerRef} className="relative mx-auto max-w-[1600px] px-6 lg:px-14">
-        <p data-reveal className="vt-chapter-num">
-          04 / The System
-        </p>
-
         <div
           data-reveal
           className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono-vt text-xs uppercase tracking-[0.18em] text-[#f5f1e8]/45 lg:text-sm"

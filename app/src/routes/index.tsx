@@ -4,13 +4,14 @@ import { SiteNav } from "../components/site/nav";
 import { JourneyIndicator } from "../components/site/journey-indicator";
 import { Opening } from "../components/site/opening";
 import { ChapterAttention } from "../components/site/chapter-attention";
-import { ChapterClick } from "../components/site/chapter-click";
 import { ChapterResponse } from "../components/site/chapter-response";
-import { ChapterSystem } from "../components/site/chapter-system";
-import { Capabilities } from "../components/site/capabilities";
+import { ChapterClick } from "../components/site/chapter-click";
 import { SelectedWork } from "../components/site/selected-work";
+import { Capabilities } from "../components/site/capabilities";
 import { Process } from "../components/site/process";
+import { ChapterSystem } from "../components/site/chapter-system";
 import { About } from "../components/site/about";
+import { FinalCta } from "../components/site/final-cta";
 import { Footer } from "../components/site/footer";
 
 export const Route = createFileRoute("/")({
@@ -25,13 +26,14 @@ function Index() {
       <main>
         <Opening />
         <ChapterAttention />
-        <ChapterClick />
         <ChapterResponse />
-        <ChapterSystem />
-        <Capabilities />
+        <ChapterClick />
         <SelectedWork />
+        <Capabilities />
         <Process />
+        <ChapterSystem />
         <About />
+        <FinalCta />
       </main>
       <Footer />
     </div>
