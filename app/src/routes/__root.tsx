@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportHiggsfieldError } from "../lib/higgsfield-error-reporting";
+import { CalendlyBadge } from "../components/site/calendly-badge";
 import appMetaJson from "../app-meta.json";
 
 declare const __HF_DESIGN_INSPECTOR__: boolean;
@@ -184,6 +185,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <CalendlyBadge />
       <Outlet />
     </QueryClientProvider>
   );
