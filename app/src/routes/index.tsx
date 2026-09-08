@@ -11,7 +11,6 @@ import { Capabilities } from "../components/site/capabilities";
 import { SelectedWork } from "../components/site/selected-work";
 import { Process } from "../components/site/process";
 import { About } from "../components/site/about";
-import { Contact } from "../components/site/contact";
 import { Footer } from "../components/site/footer";
 
 export const Route = createFileRoute("/")({
@@ -33,7 +32,6 @@ function Index() {
         <SelectedWork />
         <Process />
         <About />
-        <Contact />
       </main>
       <Footer />
     </div>

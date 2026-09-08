@@ -1,4 +1,5 @@
 import { LogoMark } from "./logo-mark";
+import { openCalendlyPopup } from "../../lib/calendly";
 
 const LINKS = [
   { href: "#work", label: "Work" },
@@ -25,7 +26,7 @@ export function SiteNav() {
             </li>
           ))}
         </ul>
-        <a href="#contact" className="vt-cta group shrink-0">
+        <a href="#" onClick={openCalendlyPopup} className="vt-cta group shrink-0">
           Book a Strategy Call
           <span className="vt-cta-rule hidden sm:block" />
         </a>

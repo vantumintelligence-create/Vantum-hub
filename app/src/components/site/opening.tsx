@@ -1,4 +1,5 @@
 import { useMagnetic } from "../../hooks/use-magnetic";
+import { openCalendlyPopup } from "../../lib/calendly";
 
 export function Opening() {
   const ctaRef = useMagnetic<HTMLAnchorElement>(0.15);
@@ -30,7 +31,7 @@ export function Opening() {
             <p className="mt-6 max-w-[30ch] text-base leading-relaxed text-[#f5f1e8]/65 lg:text-lg">
               Built together, not sold separately.
             </p>
-            <a ref={ctaRef} href="#contact" className="vt-cta group mt-10">
+            <a ref={ctaRef} href="#" onClick={openCalendlyPopup} className="vt-cta group mt-10">
               Book a Strategy Call
               <span className="vt-cta-rule" />
               <svg
