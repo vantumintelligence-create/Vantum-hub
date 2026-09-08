@@ -1,5 +1,6 @@
 import { useSectionReveal } from "../../hooks/use-section-reveal";
 import { useSequenceReveal } from "../../hooks/use-sequence-reveal";
+import { CrackLines } from "./crack-lines";
 
 const CAPABILITIES = [
   "Lead Response",
@@ -43,8 +44,9 @@ export function ChapterResponse() {
   const { ref: seqRef, visible } = useSequenceReveal<HTMLDivElement>();
 
   return (
-    <section id="response" className="border-t border-[#f5f1e8]/8 py-20 lg:py-28">
-      <div ref={containerRef} className="mx-auto max-w-[1600px] px-6 lg:px-14">
+    <section id="response" className="relative overflow-hidden border-t border-[#f5f1e8]/8 py-20 lg:py-28">
+      <CrackLines variant={2} />
+      <div ref={containerRef} className="relative mx-auto max-w-[1600px] px-6 lg:px-14">
         <p data-reveal className="vt-chapter-num">
           03 / The Response
         </p>

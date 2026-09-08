@@ -1,7 +1,7 @@
 import { useSectionReveal } from "../../hooks/use-section-reveal";
+import { CrackLines } from "./crack-lines";
 
 const OS_TAGS = ["Internal Platform", "Campaign Ops", "Automation", "Reporting"];
-const EDFP_TAGS = ["Segmentation", "Re-Engagement", "Requalifying", "Booking"];
 
 const OS_NAV = ["Overview", "Campaigns", "Leads", "Automations", "Reporting"];
 const OS_LEADS = [
@@ -11,20 +11,13 @@ const OS_LEADS = [
   { name: "S. Patel", stage: "New", tone: "text-[#f5f1e8]/40" },
 ];
 
-const EDFP_STAGES = [
-  { stage: "Segment", detail: "Grouped by status." },
-  { stage: "Re-Engage", detail: "Personal, not a blast." },
-  { stage: "Requalify", detail: "Confirm interest first." },
-  { stage: "Route", detail: "Back to a person." },
-  { stage: "Book", detail: "Set on the calendar." },
-];
-
 export function SelectedWork() {
   const containerRef = useSectionReveal<HTMLDivElement>();
 
   return (
-    <section id="work" className="border-t border-[#f5f1e8]/8 py-20 lg:py-24">
-      <div ref={containerRef} className="mx-auto max-w-[1600px] px-6 lg:px-14">
+    <section id="work" className="relative overflow-hidden border-t border-[#f5f1e8]/8 py-20 lg:py-24">
+      <CrackLines variant={2} />
+      <div ref={containerRef} className="relative mx-auto max-w-[1600px] px-6 lg:px-14">
         <p data-reveal className="vt-chapter-num">
           Selected Work
         </p>
@@ -88,35 +81,6 @@ export function SelectedWork() {
           <p data-reveal className="vt-meta-row mt-6">
             {OS_TAGS.join(" / ")}
           </p>
-        </div>
-
-        <div data-reveal className="mt-20 grid grid-cols-1 gap-10 lg:mt-24 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-4">
-            <span className="font-mono-vt text-xs text-[#c9a24b]">002</span>
-            <h3 className="mt-2 max-w-[12ch] font-display text-3xl font-semibold leading-[0.98] text-[#f5f1e8] lg:text-4xl">
-              EDFP Conversion System
-            </h3>
-            <p className="mt-5 max-w-[28ch] text-sm leading-relaxed text-[#f5f1e8]/55 lg:text-base">
-              Follow-up for leads that don&apos;t convert right away.
-            </p>
-            <p className="vt-meta-row mt-8">{EDFP_TAGS.join(" / ")}</p>
-          </div>
-
-          <div className="lg:col-span-8 lg:col-start-5">
-            <div className="divide-y divide-[#f5f1e8]/10 border-t border-[#f5f1e8]/10">
-              {EDFP_STAGES.map((row, i) => (
-                <div key={row.stage} className="flex flex-col gap-1 py-4 sm:flex-row sm:items-center sm:gap-6 lg:gap-10">
-                  <span className="font-mono-vt text-[10px] text-[#c9a24b]">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="font-display text-base font-semibold text-[#f5f1e8] sm:w-32 sm:shrink-0 sm:text-lg lg:w-40">
-                    {row.stage}
-                  </span>
-                  <span className="min-w-0 text-sm text-[#f5f1e8]/50">{row.detail}</span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>

@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 
 import { submitLead } from "../../lib/api/leads.functions";
 import { useSectionReveal } from "../../hooks/use-section-reveal";
+import { CrackLines } from "./crack-lines";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -56,10 +57,11 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="border-t border-[#f5f1e8]/8 py-20 lg:py-24">
+    <section id="contact" className="relative overflow-hidden border-t border-[#f5f1e8]/8 py-20 lg:py-24">
+      <CrackLines variant={2} />
       <div
         ref={containerRef}
-        className="mx-auto grid max-w-[1600px] grid-cols-1 gap-14 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:px-14"
+        className="relative mx-auto grid max-w-[1600px] grid-cols-1 gap-14 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:px-14"
       >
         <div data-reveal>
           <h2 className="vt-display-xl max-w-[14ch] text-[#f5f1e8]">

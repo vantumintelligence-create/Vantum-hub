@@ -1,4 +1,5 @@
 import { useSectionReveal } from "../../hooks/use-section-reveal";
+import { CrackLines } from "./crack-lines";
 
 const GROUPS = [
   {
@@ -30,8 +31,9 @@ export function Capabilities() {
   const containerRef = useSectionReveal<HTMLDivElement>();
 
   return (
-    <section className="border-t border-[#f5f1e8]/8 py-20 lg:py-24">
-      <div ref={containerRef} className="mx-auto max-w-[1600px] px-6 lg:px-14">
+    <section className="relative overflow-hidden border-t border-[#f5f1e8]/8 py-20 lg:py-24">
+      <CrackLines variant={1} />
+      <div ref={containerRef} className="relative mx-auto max-w-[1600px] px-6 lg:px-14">
         <p data-reveal className="vt-chapter-num">
           Capabilities
         </p>

@@ -1,4 +1,5 @@
 import { useSectionReveal } from "../../hooks/use-section-reveal";
+import { CrackLines } from "./crack-lines";
 
 const STEPS = [
   { n: "01", label: "Find what's not working." },
@@ -10,8 +11,9 @@ export function Process() {
   const containerRef = useSectionReveal<HTMLDivElement>();
 
   return (
-    <section id="process" className="border-t border-[#f5f1e8]/8 bg-[#171513] py-20 lg:py-24">
-      <div ref={containerRef} className="mx-auto max-w-[1600px] px-6 lg:px-14">
+    <section id="process" className="relative overflow-hidden border-t border-[#f5f1e8]/8 bg-[#171513] py-20 lg:py-24">
+      <CrackLines variant={3} />
+      <div ref={containerRef} className="relative mx-auto max-w-[1600px] px-6 lg:px-14">
         <p data-reveal className="vt-chapter-num">
           How We Work
         </p>
