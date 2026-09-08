@@ -1,11 +1,3 @@
-import { LogoMark } from "./logo-mark";
-
-const LINKS = [
-  { href: "#work", label: "Work" },
-  { href: "#process", label: "Process" },
-  { href: "#about", label: "About" },
-];
-
 function InstagramIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -33,40 +25,26 @@ function YouTubeIcon() {
 
 export function Footer() {
   return (
-    <footer className="border-t border-[#f5f1e8]/8 py-12">
-      <div className="mx-auto max-w-[1600px] px-6 lg:px-14">
-        <div className="flex flex-col items-center gap-8 lg:flex-row lg:justify-between">
-          <a href="#top">
-            <LogoMark />
-          </a>
-          <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2">
-            {LINKS.map((l) => (
-              <li key={l.href}>
-                <a href={l.href} className="text-sm text-[#f5f1e8]/60 transition-colors hover:text-[#f5f1e8]">
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <div className="flex items-center gap-4 text-[#f5f1e8]/60">
-            <a href="https://instagram.com" aria-label="Instagram" className="transition-colors hover:text-[#c9a24b]">
-              <InstagramIcon />
-            </a>
+    <footer className="border-t border-[#f5f1e8]/8 py-8">
+      <div className="mx-auto flex max-w-[1600px] flex-col items-center gap-4 px-6 lg:flex-row lg:justify-between lg:px-16">
+        <span className="font-mono-vt text-[11px] uppercase tracking-[0.16em] text-[#f5f1e8]/55">
+          © 2026 Vantum Intelligence
+        </span>
+        <div className="flex items-center gap-6">
+          <span className="font-mono-vt text-[11px] uppercase tracking-[0.2em] text-[#f5f1e8]/55">
+            ATL / MIA / LDN
+          </span>
+          <div className="flex items-center gap-4 text-[#f5f1e8]/70">
             <a href="https://linkedin.com" aria-label="LinkedIn" className="transition-colors hover:text-[#c9a24b]">
               <LinkedInIcon />
+            </a>
+            <a href="https://instagram.com" aria-label="Instagram" className="transition-colors hover:text-[#c9a24b]">
+              <InstagramIcon />
             </a>
             <a href="https://youtube.com" aria-label="YouTube" className="transition-colors hover:text-[#c9a24b]">
               <YouTubeIcon />
             </a>
           </div>
-        </div>
-        <div className="mt-10 flex flex-col items-center gap-2 border-t border-[#f5f1e8]/8 pt-6 text-center lg:flex-row lg:justify-between lg:text-left">
-          <span className="font-mono-vt text-[10px] uppercase tracking-[0.24em] text-[#f5f1e8]/35">
-            A Smarter Tomorrow.
-          </span>
-          <span className="font-mono-vt text-[10px] uppercase tracking-[0.2em] text-[#f5f1e8]/25">
-            Built with OpenAI, Anthropic, Google, and Meta.
-          </span>
         </div>
       </div>
     </footer>

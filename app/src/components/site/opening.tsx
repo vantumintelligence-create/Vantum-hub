@@ -1,52 +1,30 @@
-import { useMagnetic } from "../../hooks/use-magnetic";
-import { openCalendlyPopup } from "../../lib/calendly";
+const HERO_IMAGE = "/assets/hero-quiet.webp";
 
 export function Opening() {
-  const ctaRef = useMagnetic<HTMLAnchorElement>(0.15);
-
   return (
     <section id="top" className="relative overflow-hidden">
       <div className="absolute inset-0">
-        <picture>
-          <source media="(min-width: 1600px)" srcSet="/assets/hero-v-2560.webp" />
-          <source media="(min-width: 1024px)" srcSet="/assets/hero-v-1920.webp" />
-          <source media="(min-width: 640px)" srcSet="/assets/hero-v-1280.webp" />
-          <img
-            src="/assets/hero-v-800.webp"
-            alt=""
-            aria-hidden="true"
-            className="h-full w-full object-cover object-right"
-            fetchPriority="high"
-          />
-        </picture>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0e0d0c] via-[#0e0d0c]/55 to-transparent" />
+        <img
+          src={HERO_IMAGE}
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover"
+          fetchPriority="high"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0906]/55 via-transparent to-transparent" />
       </div>
 
-      <div className="relative flex min-h-[92svh] items-end pb-20 pt-32 lg:min-h-screen lg:items-center lg:pb-0">
-        <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-14">
-          <div className="max-w-[15ch]">
-            <h1 className="vt-display-mega text-[#f5f1e8]">
-              Advertising, automation, web.
-            </h1>
-            <p className="mt-6 max-w-[30ch] text-base leading-relaxed text-[#f5f1e8]/65 lg:text-lg">
-              Built together, not sold separately.
+      <div className="relative flex min-h-[92svh] items-end pb-14 pt-32 lg:min-h-screen lg:items-center lg:pb-0">
+        <div className="flex w-full justify-end px-6 lg:px-16">
+          <div className="max-w-[16ch] text-left">
+            <p className="font-mono-vt text-sm uppercase leading-[2] tracking-[0.35em] text-[#f5f1e8]/80 sm:text-base lg:text-lg">
+              A Quieter
+              <br />
+              Approach
+              <br />
+              To Growth
             </p>
-            <a ref={ctaRef} href="#" onClick={openCalendlyPopup} className="vt-cta group mt-10">
-              Book a Strategy Call
-              <span className="vt-cta-rule" />
-              <svg
-                className="vt-cta-arrow h-3.5 w-3.5"
-                viewBox="0 0 16 16"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-              >
-                <path d="M2 8h11M8 3l5 5-5 5" />
-              </svg>
-            </a>
-            <p className="mt-3 font-mono-vt text-[10px] uppercase tracking-[0.2em] text-[#f5f1e8]/35">
-              100% Free
-            </p>
+            <span className="mt-6 block h-px w-10 bg-[#f5f1e8]/45" />
           </div>
         </div>
       </div>
