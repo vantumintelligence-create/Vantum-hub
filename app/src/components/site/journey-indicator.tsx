@@ -1,10 +1,14 @@
 import { useJourneyStage } from "../../hooks/use-journey-stage";
 
 export function JourneyIndicator() {
-  const { stages, active } = useJourneyStage();
+  const { stages, active, hidden } = useJourneyStage();
 
   return (
-    <div className="pointer-events-none fixed right-7 top-1/2 z-30 hidden -translate-y-1/2 flex-col items-end gap-3 lg:flex">
+    <div
+      className={`pointer-events-none fixed right-7 top-1/2 z-30 hidden -translate-y-1/2 flex-col items-end gap-3 transition-opacity duration-500 lg:flex ${
+        hidden ? "opacity-0" : "opacity-100"
+      }`}
+    >
       {stages.map((stage, i) => (
         <div key={stage.id} className="flex items-center gap-2.5">
           <span
