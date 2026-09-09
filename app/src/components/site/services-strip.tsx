@@ -22,7 +22,7 @@ export function ServicesStrip() {
     <section id="services" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
       {TILES.map((t) => (
         <div key={t.label} className="border-t border-[#f5f1e8]/8">
-          <a href="#" className="group relative block h-64 overflow-hidden sm:h-72 lg:h-80">
+          <div className="group relative block h-64 overflow-hidden sm:h-72 lg:h-80">
             <img
               src={t.image}
               alt=""
@@ -32,17 +32,8 @@ export function ServicesStrip() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 flex items-center justify-between px-6 pb-6">
               <span className="font-mono-vt text-xs uppercase tracking-[0.2em] text-[#f5f1e8]">{t.label}</span>
-              <svg
-                className="h-4 w-4 text-[#f5f1e8] transition-transform duration-300 group-hover:translate-x-1"
-                viewBox="0 0 16 16"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-              >
-                <path d="M2 8h11M8 3l5 5-5 5" />
-              </svg>
             </div>
-          </a>
+          </div>
 
           {t.headline && (
             <div className="px-6 py-6">
