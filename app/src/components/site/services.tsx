@@ -21,6 +21,12 @@ const SERVICES = [
     body: "We design and develop websites that clearly communicate your value and make it easy for visitors to take the next step. Our web services include website design and development, landing pages, lead-capture systems, analytics, deployment, and ongoing website management. Every project is approached as a working part of your business, with attention to usability, performance, and conversion.",
     image: "/assets/tile-strategy.webp",
   },
+  {
+    title: "Lead Generation",
+    tag: "One Connected System",
+    body: "Our services work together to create a more complete lead-generation system. Advertising brings the right people to your business, your website gives them a clear path forward, and automation helps ensure each inquiry receives timely attention.",
+    image: "/assets/tile-lead-systems.webp",
+  },
 ];
 
 function PlusIcon({ open }: { open: boolean }) {
@@ -106,28 +112,6 @@ export function Services() {
             </div>
           );
         })}
-      </div>
-
-      {/* Lead generation closing */}
-      <div className="px-6 py-16 lg:py-24 lg:pl-72 lg:pr-16">
-        <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-5">
-            <img
-              src="/assets/tile-lead-systems.webp"
-              alt=""
-              loading="lazy"
-              className="aspect-[4/3] w-full object-cover"
-            />
-          </div>
-          <div className="lg:col-span-6 lg:col-start-7">
-            <p className="vt-chapter-num">Lead Generation</p>
-            <p className="mt-6 max-w-2xl font-display text-xl leading-relaxed text-[#f5f1e8]/85 sm:text-2xl">
-              Our services work together to create a more complete lead-generation system. Advertising brings the right
-              people to your business, your website gives them a clear path forward, and automation helps ensure each
-              inquiry receives timely attention.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );
