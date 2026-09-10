@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { SiteNav } from "../components/site/nav";
 import { Opening } from "../components/site/opening";
-import { ServicesStrip } from "../components/site/services-strip";
+import { Services } from "../components/site/services";
+import { About } from "../components/site/about";
 import { Footer } from "../components/site/footer";
 
 export const Route = createFileRoute("/")({
@@ -15,7 +16,8 @@ function Index() {
       <SiteNav />
       <main>
         <Opening />
-        <ServicesStrip />
+        <Services />
+        <About />
       </main>
       <Footer />
     </div>
