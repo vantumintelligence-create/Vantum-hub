@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 import { openCalendlyPopup } from "../../lib/calendly";
 
 const LINKS = [
@@ -17,19 +21,123 @@ function Wordmark({ titleClassName, subClassName }: { titleClassName: string; su
   );
 }
 
+function MenuIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-5 w-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+    >
+      {open ? <path d="M5 5l14 14M19 5L5 19" /> : <path d="M3.5 8h17M3.5 16h17" />}
+    </svg>
+  );
+}
+
 export function SiteNav() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Close the menu with Escape
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
+
+  // Lock background scroll while the menu is open
+  useEffect(() => {
+    if (!menuOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [menuOpen]);
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <>
       {/* Mobile / tablet top bar */}
       <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between border-b border-[#f5f1e8]/8 bg-[#0b0906]/85 px-6 py-5 backdrop-blur-md lg:hidden">
         <Wordmark titleClassName="text-lg tracking-[0.06em]" subClassName="text-[8px] tracking-[0.4em]" />
-        <a
-          href="#"
-          onClick={openCalendlyPopup}
-          className="inline-flex items-center gap-2 rounded-md border border-[#f5f1e8]/25 px-4 py-2 font-mono-vt text-[10px] uppercase tracking-[0.16em] text-[#f5f1e8] transition-colors hover:border-[#c9a24b] hover:text-[#c9a24b]"
+
+        <div className="flex items-center gap-3">
+          {!menuOpen && (
+            <a
+              href="#"
+              onClick={openCalendlyPopup}
+              className="inline-flex items-center gap-2 rounded-md border border-[#f5f1e8]/25 px-4 py-2 font-mono-vt text-[10px] uppercase tracking-[0.16em] text-[#f5f1e8] transition-colors hover:border-[#c9a24b] hover:text-[#c9a24b]"
+            >
+              Get In Touch
+            </a>
+          )}
+          <button
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav-menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md text-[#f5f1e8] transition-colors hover:text-[#c9a24b]"
+          >
+            <MenuIcon open={menuOpen} />
+          </button>
+        </div>
+
+        {/* Mobile menu panel */}
+        <div
+          id="mobile-nav-menu"
+          aria-hidden={!menuOpen}
+          className={`absolute inset-x-0 top-full flex flex-col border-b border-[#f5f1e8]/8 bg-[#0b0906]/97 backdrop-blur-md transition-all duration-300 ease-out ${
+            menuOpen
+              ? "visible translate-y-0 opacity-100"
+              : "pointer-events-none invisible -translate-y-2 opacity-0"
+          }`}
         >
-          Get In Touch
-        </a>
+          <nav className="px-6 pb-4 pt-8">
+            <ul className="space-y-6">
+              {LINKS.map((l, i) => (
+                <li key={l.label}>
+                  <a
+                    href={l.href}
+                    onClick={closeMenu}
+                    className={`group flex items-center gap-3 font-mono-vt text-xs uppercase tracking-[0.2em] transition-colors ${
+                      i === 0 ? "text-[#f5f1e8]" : "text-[#f5f1e8]/55 hover:text-[#f5f1e8]"
+                    }`}
+                  >
+                    <span
+                      className={`h-px bg-current transition-all duration-300 ${
+                        i === 0 ? "w-4" : "w-0 group-hover:w-4"
+                      }`}
+                    />
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="border-t border-[#f5f1e8]/8 px-6 py-6">
+            <a
+              href="#"
+              onClick={(event) => {
+                closeMenu();
+                openCalendlyPopup(event);
+              }}
+              className="inline-flex items-center gap-2 rounded-md border border-[#c9a24b]/50 px-5 py-3 font-mono-vt text-[11px] uppercase tracking-[0.18em] text-[#c9a24b] transition-colors hover:bg-[#c9a24b] hover:text-[#0b0906]"
+            >
+              Get In Touch
+              <svg className="h-3 w-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
+                <path d="M2 8h11M8 3l5 5-5 5" />
+              </svg>
+            </a>
+          </div>
+        </div>
       </header>
 
       {/* Desktop fixed sidebar */}
