@@ -7,7 +7,7 @@ import { openCalendlyPopup } from "../../lib/calendly";
 const LINKS = [
   { href: "#top", label: "Home" },
   { href: "#services", label: "Services" },
-  { href: "#", label: "Work" },
+  { href: "#work", label: "Work" },
   { href: "#about", label: "About" },
   { href: "#", label: "Contact" },
 ];

@@ -2,7 +2,7 @@ export function About() {
   return (
     <section id="about" className="border-t border-[#f5f1e8]/10 py-24 lg:py-32">
       <div className="px-6 lg:pl-72 lg:pr-16">
-        <p className="vt-chapter-num">02 · About</p>
+        <p className="vt-chapter-num">03 · About</p>
         <h2 className="vt-display-xl mt-8 max-w-4xl text-[#f5f1e8]">About Vantum Intelligence</h2>
 
         <div className="mt-12 max-w-3xl">
