@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 
 const REEL = [
   { key: "lamar-crowd-ad", title: "Lamar — Crowd Energy", tag: "Event Activation" },
-  { key: "stage-ad", title: "Stage Ad", tag: "Event Activation" },
   { key: "live-ad", title: "Live Performance", tag: "Event Activation" },
   { key: "soundboard-ad", title: "Soundboard Activation", tag: "Ad Creative" },
   { key: "rotating-ad-concept", title: "Rotating Ad Concept", tag: "Ad Creative" },
@@ -75,7 +74,7 @@ export function Work() {
         </p>
       </div>
 
-      <div className="mt-14 grid grid-cols-1 gap-px bg-[#f5f1e8]/10 sm:grid-cols-2 lg:grid-cols-3 lg:pl-60">
+      <div className="mt-14 grid grid-cols-1 gap-px bg-[#f5f1e8]/10 sm:grid-cols-2 lg:grid-cols-4 lg:pl-60">
         {REEL.map((item) => (
           <ReelTile key={item.key} item={item} />
         ))}
