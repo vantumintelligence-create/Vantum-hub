@@ -9,7 +9,6 @@ const LINKS = [
   { href: "#services", label: "Services" },
   { href: "#work", label: "Work" },
   { href: "#about", label: "About" },
-  { href: "#", label: "Contact" },
 ];
 
 const SECTION_IDS = ["top", "services", "work", "about"];
