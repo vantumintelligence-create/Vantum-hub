@@ -12,6 +12,34 @@ const LINKS = [
   { href: "#", label: "Contact" },
 ];
 
+const SECTION_IDS = ["top", "services", "work", "about"];
+
+function useActiveSection() {
+  const [activeId, setActiveId] = useState("top");
+
+  useEffect(() => {
+    const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => el !== null,
+    );
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((entry) => entry.isIntersecting);
+        if (visible.length === 0) return;
+        const mostVisible = visible.reduce((a, b) => (a.intersectionRatio > b.intersectionRatio ? a : b));
+        setActiveId(mostVisible.target.id);
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: [0, 1] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  return activeId;
+}
+
 function Wordmark({ titleClassName, subClassName }: { titleClassName: string; subClassName: string }) {
   return (
     <a href="#top" className="inline-block leading-none">
@@ -38,6 +66,7 @@ function MenuIcon({ open }: { open: boolean }) {
 
 export function SiteNav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const activeId = useActiveSection();
 
   // Close the menu with Escape
   useEffect(() => {
@@ -101,24 +130,27 @@ export function SiteNav() {
         >
           <nav className="px-6 pb-4 pt-8">
             <ul className="space-y-6">
-              {LINKS.map((l, i) => (
-                <li key={l.label}>
-                  <a
-                    href={l.href}
-                    onClick={closeMenu}
-                    className={`group flex items-center gap-3 font-mono-vt text-xs uppercase tracking-[0.2em] transition-colors ${
-                      i === 0 ? "text-[#f5f1e8]" : "text-[#f5f1e8]/55 hover:text-[#f5f1e8]"
-                    }`}
-                  >
-                    <span
-                      className={`h-px bg-current transition-all duration-300 ${
-                        i === 0 ? "w-4" : "w-0 group-hover:w-4"
+              {LINKS.map((l) => {
+                const isActive = l.href === `#${activeId}`;
+                return (
+                  <li key={l.label}>
+                    <a
+                      href={l.href}
+                      onClick={closeMenu}
+                      className={`group flex items-center gap-3 font-mono-vt text-xs uppercase tracking-[0.2em] transition-colors ${
+                        isActive ? "text-[#f5f1e8]" : "text-[#f5f1e8]/55 hover:text-[#f5f1e8]"
                       }`}
-                    />
-                    {l.label}
-                  </a>
-                </li>
-              ))}
+                    >
+                      <span
+                        className={`h-px bg-current transition-all duration-300 ${
+                          isActive ? "w-4" : "w-0 group-hover:w-4"
+                        }`}
+                      />
+                      {l.label}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
@@ -146,23 +178,26 @@ export function SiteNav() {
           <Wordmark titleClassName="text-2xl tracking-[0.06em]" subClassName="text-[10px] tracking-[0.42em]" />
           <nav className="mt-20">
             <ul className="space-y-7">
-              {LINKS.map((l, i) => (
-                <li key={l.label}>
-                  <a
-                    href={l.href}
-                    className={`group flex items-center gap-3 font-mono-vt text-xs uppercase tracking-[0.2em] transition-colors ${
-                      i === 0 ? "text-[#f5f1e8]" : "text-[#f5f1e8]/40 hover:text-[#f5f1e8]/75"
-                    }`}
-                  >
-                    <span
-                      className={`h-px bg-current transition-all duration-300 ${
-                        i === 0 ? "w-4" : "w-0 group-hover:w-4"
+              {LINKS.map((l) => {
+                const isActive = l.href === `#${activeId}`;
+                return (
+                  <li key={l.label}>
+                    <a
+                      href={l.href}
+                      className={`group flex items-center gap-3 font-mono-vt text-xs uppercase tracking-[0.2em] transition-colors ${
+                        isActive ? "text-[#f5f1e8]" : "text-[#f5f1e8]/40 hover:text-[#f5f1e8]/75"
                       }`}
-                    />
-                    {l.label}
-                  </a>
-                </li>
-              ))}
+                    >
+                      <span
+                        className={`h-px bg-current transition-all duration-300 ${
+                          isActive ? "w-4" : "w-0 group-hover:w-4"
+                        }`}
+                      />
+                      {l.label}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         </div>

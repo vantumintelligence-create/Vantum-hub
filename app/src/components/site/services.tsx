@@ -4,28 +4,34 @@ import { useState } from "react";
 
 const SERVICES = [
   {
-    title: "Advertising",
-    tag: "Ad Creation and Campaign Management",
-    body: "We develop and manage advertising campaigns built around clear objectives and informed by ongoing performance. Each engagement may include campaign strategy, audience development, copywriting, static and video creative, testing, campaign management, and reporting. We assess what is working, make purposeful adjustments, and keep your advertising focused on generating meaningful business opportunities.",
+    title: "Strategy & Planning",
+    tag: "Customer research · Positioning · Marketing planning",
+    body: "We examine your offer, customers, competition, and current performance to identify what deserves attention. You receive recommendations with a rationale, an order of priority, and a plan that accounts for your budget and available resources.",
+    image: "/assets/tile-strategy-planning.webp",
+  },
+  {
+    title: "Advertising & Creative",
+    tag: "Static and video advertising · Campaign management · Creative testing",
+    body: "We develop campaign concepts, write copy, and produce static and video ads that communicate your offer. For managed campaigns, we review performance alongside lead quality and sales feedback to decide what to adjust, test, or discontinue.",
     image: "/assets/tile-ad-creative.webp",
   },
   {
-    title: "Automation",
-    tag: "Faster Responses and More Consistent Follow-Up",
-    body: "We build practical automations that help your business respond to leads, maintain communication, and reduce repetitive administrative work. Capabilities include immediate lead response, missed-call text-back, SMS and email follow-up, CRM workflows, review requests, and customer reactivation. These systems help prevent opportunities from being overlooked while giving your team a more organized way to manage customer relationships.",
-    image: "/assets/tile-automation.webp",
-  },
-  {
-    title: "Web Design and Development",
-    tag: "Websites Built to Support Business Growth",
-    body: "We design and develop websites that clearly communicate your value and make it easy for visitors to take the next step. Our web services include website design and development, landing pages, lead-capture systems, analytics, deployment, and ongoing website management. Every project is approached as a working part of your business, with attention to usability, performance, and conversion.",
+    title: "Websites & Landing Pages",
+    tag: "Business websites · Landing pages · Booking and inquiry forms",
+    body: "We plan, write, design, and build websites that give prospective customers the information they need to assess your business. The work brings together service information, relevant project examples, and a straightforward way to inquire, book, or purchase.",
     image: "/assets/tile-strategy.webp",
   },
   {
-    title: "Lead Generation",
-    tag: "One Connected System",
-    body: "Our services work together to create a more complete lead-generation system. Advertising brings the right people to your business, your website gives them a clear path forward, and automation helps ensure each inquiry receives timely attention.",
-    image: "/assets/tile-lead-systems.webp",
+    title: "Search & AI Visibility",
+    tag: "Search optimization · Local visibility · Content development",
+    body: "We improve the content and technical structure that help search engines and AI search tools find and interpret your website. Our SEO and AEO work addresses the services customers search for, the questions they ask, and the information they use to compare providers.",
+    image: "/assets/tile-search-visibility.webp",
+  },
+  {
+    title: "Automation & Follow-Up",
+    tag: "Inquiry response · Customer follow-up · CRM workflows",
+    body: "We build workflows for responding to inquiries, coordinating follow-up, and maintaining customer records. Each system reflects your team's responsibilities, with agreed messages, timing, and handoffs for situations that require personal attention.",
+    image: "/assets/tile-automation.webp",
   },
 ];
 
@@ -51,12 +57,13 @@ export function Services() {
       <div className="px-6 lg:pl-72 lg:pr-16">
         <p className="vt-chapter-num">01 · Services</p>
         <p className="mt-8 max-w-3xl font-display text-2xl font-medium leading-snug tracking-tight text-[#f5f1e8] sm:text-3xl">
-          Vantum Intelligence helps businesses attract qualified leads, respond faster, and manage growth with greater
-          consistency.
+          Vantum Intelligence helps businesses decide where to focus their marketing and how to support it
+          operationally.
         </p>
         <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[#f5f1e8]/60">
-          Our work brings advertising, automation, and web development together so each part of the customer journey
-          supports the next.
+          We review how customers find your business, evaluate your offer, and become clients. From there, we
+          recommend and deliver the strategy, advertising, websites, search improvements, and follow-up systems your
+          business needs.
         </p>
       </div>
 
