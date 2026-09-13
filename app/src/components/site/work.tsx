@@ -114,7 +114,7 @@ export function Work() {
     <section id="work" className="border-t border-[#f5f1e8]/10 py-24 lg:py-32">
       <div className="flex flex-col gap-8 px-6 lg:flex-row lg:items-end lg:justify-between lg:pl-72 lg:pr-16">
         <div>
-          <p className="vt-chapter-num">02 · Work</p>
+          <p className="vt-chapter-num">Work</p>
           <h2 className="vt-display-xl mt-8 max-w-4xl text-[#f5f1e8]">Selected Work</h2>
           <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-[#f5f1e8]/65">
             A sample of ad creative and campaign work built for clients — sound on for the full effect.

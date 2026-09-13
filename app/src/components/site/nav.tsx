@@ -23,14 +23,33 @@ function useActiveSection() {
     );
     if (sections.length === 0) return;
 
+    // Track intersection state per section rather than relying on a single
+    // callback batch: a short section (e.g. Services collapsed) can enter and
+    // leave a narrow detection band between two scroll frames, so we keep a
+    // running record and always resolve to the lowest (most recently
+    // entered) section that is still intersecting, in document order.
+    const intersecting = new Set<string>();
+
+    const resolveActive = () => {
+      for (let i = SECTION_IDS.length - 1; i >= 0; i -= 1) {
+        if (intersecting.has(SECTION_IDS[i])) {
+          setActiveId(SECTION_IDS[i]);
+          return;
+        }
+      }
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries.filter((entry) => entry.isIntersecting);
-        if (visible.length === 0) return;
-        const mostVisible = visible.reduce((a, b) => (a.intersectionRatio > b.intersectionRatio ? a : b));
-        setActiveId(mostVisible.target.id);
+        for (const entry of entries) {
+          if (entry.isIntersecting) intersecting.add(entry.target.id);
+          else intersecting.delete(entry.target.id);
+        }
+        resolveActive();
       },
-      { rootMargin: "-45% 0px -50% 0px", threshold: [0, 1] },
+      // Treat the top third of the viewport as the "current section" band —
+      // wide enough that short sections still register as they pass through.
+      { rootMargin: "0px 0px -66% 0px", threshold: 0 },
     );
 
     sections.forEach((section) => observer.observe(section));

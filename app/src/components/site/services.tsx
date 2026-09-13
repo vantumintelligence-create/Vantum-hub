@@ -55,16 +55,7 @@ export function Services() {
   return (
     <section id="services" className="pt-24 lg:pt-32">
       <div className="px-6 lg:pl-72 lg:pr-16">
-        <p className="vt-chapter-num">01 · Services</p>
-        <p className="mt-8 max-w-3xl font-display text-2xl font-medium leading-snug tracking-tight text-[#f5f1e8] sm:text-3xl">
-          Vantum Intelligence helps businesses decide where to focus their marketing and how to support it
-          operationally.
-        </p>
-        <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[#f5f1e8]/60">
-          We review how customers find your business, evaluate your offer, and become clients. From there, we
-          recommend and deliver the strategy, advertising, websites, search improvements, and follow-up systems your
-          business needs.
-        </p>
+        <h2 className="vt-display-xl text-[#f5f1e8]">Services</h2>
       </div>
 
       <div className="mt-16 border-y border-[#f5f1e8]/10 lg:mt-24">
