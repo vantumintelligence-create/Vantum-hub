@@ -1,0 +1,38 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  // Deploy config for the CUSTOM DOMAIN (vantumintelligence.com), deployed
+  // directly to this project's own Cloudflare account with
+  // `wrangler deploy -c wrangler.production.jsonc`. This is separate from the
+  // Higgsfield-managed `*.higgsfield.app` deploy, which uses wrangler.jsonc
+  // (a placeholder — real values injected by Higgsfield's own deploy CI) and
+  // is driven by `higgsfield website deploy`. The two are independent
+  // deployments of the same code to two different hosts; keep both updated.
+  //
+  // Worker name must match the existing Worker the custom domain is already
+  // bound to — renaming it detaches the domain route.
+  "name": "vantum-intelligence",
+
+  "main": "dist/server/server.js",
+  "compatibility_date": "2025-05-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS",
+    "not_found_handling": "none"
+  },
+
+  "vars": { "HF_ENV": "production", "APP_SLUG": "vantum-intelligence" },
+
+  "routes": [{ "pattern": "vantumintelligence.com", "custom_domain": true }],
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "vantum-intelligence-db",
+      "database_id": "3670616d-c1d0-40db-89f4-fc54727b5426"
+    }
+  ]
+}
