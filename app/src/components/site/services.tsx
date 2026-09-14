@@ -8,30 +8,35 @@ const SERVICES = [
     tag: "Customer research · Positioning · Marketing planning",
     body: "We examine your offer, customers, competition, and current performance to identify what deserves attention. You receive recommendations with a rationale, an order of priority, and a plan that accounts for your budget and available resources.",
     image: "/assets/tile-strategy-planning.webp",
+    alt: "Strategy and marketing planning process at Vantum Intelligence",
   },
   {
     title: "Advertising & Creative",
     tag: "Static and video advertising · Campaign management · Creative testing",
     body: "We develop campaign concepts, write copy, and produce static and video ads that communicate your offer. For managed campaigns, we review performance alongside lead quality and sales feedback to decide what to adjust, test, or discontinue.",
     image: "/assets/tile-ad-creative.webp",
+    alt: "Ad creative example from a Vantum Intelligence advertising campaign",
   },
   {
     title: "Websites & Landing Pages",
     tag: "Business websites · Landing pages · Booking and inquiry forms",
     body: "We plan, write, design, and build websites that give prospective customers the information they need to assess your business. The work brings together service information, relevant project examples, and a straightforward way to inquire, book, or purchase.",
     image: "/assets/tile-strategy.webp",
+    alt: "Website and landing page design built by Vantum Intelligence",
   },
   {
     title: "Search & AI Visibility",
     tag: "Search optimization · Local visibility · Content development",
     body: "We improve the content and technical structure that help search engines and AI search tools find and interpret your website. Our SEO and AEO work addresses the services customers search for, the questions they ask, and the information they use to compare providers.",
     image: "/assets/tile-search-visibility.webp",
+    alt: "Search engine and AI visibility optimization work by Vantum Intelligence",
   },
   {
     title: "Automation & Follow-Up",
     tag: "Inquiry response · Customer follow-up · CRM workflows",
     body: "We build workflows for responding to inquiries, coordinating follow-up, and maintaining customer records. Each system reflects your team's responsibilities, with agreed messages, timing, and handoffs for situations that require personal attention.",
     image: "/assets/tile-automation.webp",
+    alt: "Inquiry response and customer follow-up automation built by Vantum Intelligence",
   },
 ];
 
@@ -49,13 +54,14 @@ function PlusIcon({ open }: { open: boolean }) {
   );
 }
 
-export function Services() {
+export function Services({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2" }) {
   const [openIndex, setOpenIndex] = useState(-1);
+  const Heading = headingLevel;
 
   return (
     <section id="services" className="pt-24 lg:pt-32">
       <div className="px-6 lg:pl-72 lg:pr-16">
-        <h2 className="vt-display-xl text-[#f5f1e8]">Services</h2>
+        <Heading className="vt-display-xl text-[#f5f1e8]">Services</Heading>
       </div>
 
       <div className="mt-16 border-y border-[#f5f1e8]/10 lg:mt-24">
@@ -95,14 +101,16 @@ export function Services() {
                     <div className="lg:col-span-5">
                       <img
                         src={s.image}
-                        alt=""
+                        alt={s.alt}
                         loading="lazy"
                         className="aspect-[4/3] w-full object-cover"
                       />
                     </div>
                     <div className="lg:col-span-6 lg:col-start-7">
                       <p className="vt-meta-row">{s.tag}</p>
-                      <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-[#f5f1e8]/65">{s.body}</p>
+                      <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-[#f5f1e8]/65">
+                        {s.body}
+                      </p>
                     </div>
                   </div>
                 </div>

@@ -2,7 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 // Ordered best-first by production value and impact.
 const REEL = [
@@ -18,7 +23,13 @@ const REEL = [
 
 function SoundIcon({ muted }: { muted: boolean }) {
   return (
-    <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.6">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-3.5 w-3.5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+    >
       <path d="M4 9.5v5h3.5L13 19V5L7.5 9.5H4Z" strokeLinejoin="round" />
       {muted ? (
         <path d="M16.5 9.5l4 4M20.5 9.5l-4 4" strokeLinecap="round" />
@@ -31,7 +42,13 @@ function SoundIcon({ muted }: { muted: boolean }) {
 
 function ArrowIcon({ direction }: { direction: "left" | "right" }) {
   return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+    >
       <path
         d={direction === "left" ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7"}
         strokeLinecap="round"
@@ -71,7 +88,9 @@ function ReelTile({ item }: { item: (typeof REEL)[number] }) {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
 
       <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 px-5 py-5">
-        <span className="font-mono-vt text-[10px] uppercase tracking-[0.2em] text-[#c9a24b]">Ad Creative</span>
+        <span className="font-mono-vt text-[10px] uppercase tracking-[0.2em] text-[#c9a24b]">
+          Ad Creative
+        </span>
         {!isImage && (
           <button
             type="button"
@@ -87,7 +106,8 @@ function ReelTile({ item }: { item: (typeof REEL)[number] }) {
   );
 }
 
-export function Work() {
+export function Work({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2" } = {}) {
+  const Heading = headingLevel;
   const [api, setApi] = useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
@@ -115,9 +135,10 @@ export function Work() {
       <div className="flex flex-col gap-8 px-6 lg:flex-row lg:items-end lg:justify-between lg:pl-72 lg:pr-16">
         <div>
           <p className="vt-chapter-num">Work</p>
-          <h2 className="vt-display-xl mt-8 max-w-4xl text-[#f5f1e8]">Selected Work</h2>
+          <Heading className="vt-display-xl mt-8 max-w-4xl text-[#f5f1e8]">Selected Work</Heading>
           <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-[#f5f1e8]/65">
-            A sample of ad creative and campaign work built for clients — sound on for the full effect.
+            A sample of ad creative and campaign work built for clients — sound on for the full
+            effect.
           </p>
         </div>
 

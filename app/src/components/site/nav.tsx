@@ -5,18 +5,33 @@ import { useEffect, useState } from "react";
 import { openCalendlyPopup } from "../../lib/calendly";
 
 const LINKS = [
-  { href: "#top", label: "Home" },
-  { href: "#services", label: "Services" },
-  { href: "#work", label: "Work" },
-  { href: "#about", label: "About" },
+  { href: "/#top", label: "Home" },
+  { href: "/#services", label: "Services" },
+  { href: "/#work", label: "Work" },
+  { href: "/#about", label: "About" },
 ];
 
 const SECTION_IDS = ["top", "services", "work", "about"];
+const PATH_TO_SECTION: Record<string, string> = {
+  "/": "top",
+  "/services": "services",
+  "/work": "work",
+  "/about": "about",
+};
 
 function useActiveSection() {
   const [activeId, setActiveId] = useState("top");
 
   useEffect(() => {
+    const pathSection = PATH_TO_SECTION[window.location.pathname];
+    // On a standalone page (not the scrolling homepage), the nav highlights
+    // that page's link directly instead of running the scroll-spy observer,
+    // which only has sections to watch on "/".
+    if (pathSection && pathSection !== "top") {
+      setActiveId(pathSection);
+      return;
+    }
+
     const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(
       (el): el is HTMLElement => el !== null,
     );
@@ -58,11 +73,21 @@ function useActiveSection() {
   return activeId;
 }
 
-function Wordmark({ titleClassName, subClassName }: { titleClassName: string; subClassName: string }) {
+function Wordmark({
+  titleClassName,
+  subClassName,
+}: {
+  titleClassName: string;
+  subClassName: string;
+}) {
   return (
-    <a href="#top" className="inline-block leading-none">
-      <span className={`block font-display font-semibold text-[#f5f1e8] ${titleClassName}`}>VANTUM</span>
-      <span className={`mt-1 block font-mono-vt text-[#f5f1e8]/55 ${subClassName}`}>INTELLIGENCE</span>
+    <a href="/#top" className="inline-block leading-none">
+      <span className={`block font-display font-semibold text-[#f5f1e8] ${titleClassName}`}>
+        VANTUM
+      </span>
+      <span className={`mt-1 block font-mono-vt text-[#f5f1e8]/55 ${subClassName}`}>
+        INTELLIGENCE
+      </span>
     </a>
   );
 }
@@ -112,7 +137,10 @@ export function SiteNav() {
     <>
       {/* Mobile / tablet top bar */}
       <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between border-b border-[#f5f1e8]/8 bg-[#0b0906]/85 px-6 py-5 backdrop-blur-md lg:hidden">
-        <Wordmark titleClassName="text-lg tracking-[0.06em]" subClassName="text-[8px] tracking-[0.4em]" />
+        <Wordmark
+          titleClassName="text-lg tracking-[0.06em]"
+          subClassName="text-[8px] tracking-[0.4em]"
+        />
 
         <div className="flex items-center gap-3">
           {!menuOpen && (
@@ -149,7 +177,7 @@ export function SiteNav() {
           <nav className="px-6 pb-4 pt-8">
             <ul className="space-y-6">
               {LINKS.map((l) => {
-                const isActive = l.href === `#${activeId}`;
+                const isActive = l.href === `/#${activeId}`;
                 return (
                   <li key={l.label}>
                     <a
@@ -182,7 +210,13 @@ export function SiteNav() {
               className="inline-flex items-center gap-2 rounded-md border border-[#c9a24b]/50 px-5 py-3 font-mono-vt text-[11px] uppercase tracking-[0.18em] text-[#c9a24b] transition-colors hover:bg-[#c9a24b] hover:text-[#0b0906]"
             >
               Get In Touch
-              <svg className="h-3 w-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
+              <svg
+                className="h-3 w-3"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+              >
                 <path d="M2 8h11M8 3l5 5-5 5" />
               </svg>
             </a>
@@ -193,11 +227,14 @@ export function SiteNav() {
       {/* Desktop fixed sidebar */}
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-60 flex-col justify-between px-9 py-10 lg:flex">
         <div>
-          <Wordmark titleClassName="text-2xl tracking-[0.06em]" subClassName="text-[10px] tracking-[0.42em]" />
+          <Wordmark
+            titleClassName="text-2xl tracking-[0.06em]"
+            subClassName="text-[10px] tracking-[0.42em]"
+          />
           <nav className="mt-20">
             <ul className="space-y-7">
               {LINKS.map((l) => {
-                const isActive = l.href === `#${activeId}`;
+                const isActive = l.href === `/#${activeId}`;
                 return (
                   <li key={l.label}>
                     <a
@@ -228,7 +265,13 @@ export function SiteNav() {
         className="fixed right-8 top-8 z-40 hidden items-center gap-2.5 rounded-md border border-[#f5f1e8]/25 px-5 py-3 font-mono-vt text-[11px] uppercase tracking-[0.18em] text-[#f5f1e8] transition-colors hover:border-[#c9a24b] hover:text-[#c9a24b] lg:inline-flex"
       >
         Get In Touch
-        <svg className="h-3 w-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
+        <svg
+          className="h-3 w-3"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+        >
           <path d="M2 8h11M8 3l5 5-5 5" />
         </svg>
       </a>

@@ -17,8 +17,7 @@ import appMetaJson from "../app-meta.json";
 declare const __HF_DESIGN_INSPECTOR__: boolean;
 
 const DEFAULT_TITLE = "Vantum Intelligence";
-const DEFAULT_DESCRIPTION =
-  "Advertising, automation, and web work for local and regional businesses, built as one connected system instead of separate vendors.";
+const DEFAULT_DESCRIPTION = "The #1 Client Acquisition System for Growing Businesses.";
 
 type AppMeta = {
   og_title?: string | null;
@@ -59,10 +58,14 @@ function buildHead(meta: AppMeta) {
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title },
       { name: "description", content: description },
+      { name: "author", content: DEFAULT_TITLE },
       { name: "theme-color", content: "#0e0d0c" },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: DEFAULT_TITLE },
+      { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: ogImage ? "summary_large_image" : "summary" },
       ...(ogImage
         ? [
