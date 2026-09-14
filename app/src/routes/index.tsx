@@ -46,10 +46,12 @@ const HOME_SCHEMA = JSON.stringify({
   ],
 });
 
+const HOME_TITLE = "#1 Client Acquisition System for Growing Businesses | Vantum Intelligence";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     links: [{ rel: "canonical", href: SITE_URL }],
-    meta: [{ property: "og:url", content: SITE_URL }],
+    meta: [{ title: HOME_TITLE }, { property: "og:url", content: SITE_URL }],
   }),
   component: Index,
 });
