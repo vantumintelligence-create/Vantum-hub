@@ -13,11 +13,21 @@ const HOME_SCHEMA = JSON.stringify({
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "ImageObject",
+      "@id": `${SITE_URL}/#logo`,
+      url: `${SITE_URL}/assets/icon-512.png`,
+      contentUrl: `${SITE_URL}/assets/icon-512.png`,
+      width: 512,
+      height: 512,
+      caption: SITE_NAME,
+    },
+    {
       "@type": "Organization",
       "@id": `${SITE_URL}/#org`,
       name: SITE_NAME,
       url: SITE_URL,
-      logo: `${SITE_URL}/assets/icon-512.png`,
+      logo: { "@id": `${SITE_URL}/#logo` },
+      image: { "@id": `${SITE_URL}/#logo` },
       description: SITE_DESCRIPTION,
     },
     {
