@@ -33,7 +33,6 @@ const HOME_SCHEMA = JSON.stringify({
       name: SITE_NAME,
       url: SITE_URL,
       description: SITE_DESCRIPTION,
-      areaServed: ["Atlanta", "Miami", "London"],
       serviceType: [
         "Strategy & Planning",
         "Advertising & Creative",

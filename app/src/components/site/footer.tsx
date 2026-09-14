@@ -63,8 +63,10 @@ export function Footer() {
           </a>
         </nav>
         <div className="flex items-center gap-6">
-          <span className="font-mono-vt text-[11px] uppercase tracking-[0.2em] text-[#f5f1e8]/55">
-            ATL / MIA / LDN
+          <span className="font-mono-vt text-[11px] uppercase leading-relaxed tracking-[0.16em] text-[#f5f1e8]/55">
+            Vantum Intelligence
+            <br />
+            Client Acquisition Systems for Growing Businesses
           </span>
           <div className="flex items-center gap-4 text-[#f5f1e8]/70">
             <a
