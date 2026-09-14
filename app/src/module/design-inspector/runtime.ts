@@ -73,6 +73,26 @@ const state: InspectorState = {
 
 const CURSOR_STYLE_ID = "higgsfield-design-inspector-cursor-style";
 
+// Only the Supercomputer builder is allowed to drive design mode. Without
+// this check any page can iframe a design-inspector build and harvest DOM
+// content (text, attributes, computed styles) on every hover/click by
+// posting a spoofed HF_DESIGN_MODE_SET message (CWE-346).
+const TRUSTED_PARENT_ORIGIN_HOST = "higgsfield.ai";
+
+function isTrustedParentOrigin(origin: string): boolean {
+  let url: URL;
+  try {
+    url = new URL(origin);
+  } catch {
+    return false;
+  }
+  return (
+    url.protocol === "https:" &&
+    (url.hostname === TRUSTED_PARENT_ORIGIN_HOST ||
+      url.hostname.endsWith(`.${TRUSTED_PARENT_ORIGIN_HOST}`))
+  );
+}
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
@@ -518,6 +538,9 @@ export function installHiggsfieldDesignInspector() {
       return;
     }
     if (isSetMessage(event.data)) {
+      if (!isTrustedParentOrigin(event.origin)) {
+        return;
+      }
       setEnabled(event.data, event.origin);
     }
   });

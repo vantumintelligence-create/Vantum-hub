@@ -3,9 +3,18 @@ import { z } from "zod";
 
 import { bindings } from "../bindings.server";
 
+// zod's default z.string().email() pattern has a quantified group
+// ([A-Za-z0-9_'+\-.]*) immediately followed by an overlapping character
+// class, which is polynomial-time on a long, unanchored input with no "@" —
+// exactly what an anonymous POST body to this public endpoint can supply.
+// This is the standard WHATWG/HTML5 input[type=email] pattern instead: it
+// only ever backtracks linearly.
+const SAFE_EMAIL_PATTERN =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
 const leadInput = z.object({
   name: z.string().trim().min(1).max(120),
-  email: z.string().trim().email().max(200),
+  email: z.string().trim().email({ pattern: SAFE_EMAIL_PATTERN }).max(200),
   phone: z.string().trim().max(40).optional(),
   business: z.string().trim().max(160).optional(),
   message: z.string().trim().max(2000).optional(),
