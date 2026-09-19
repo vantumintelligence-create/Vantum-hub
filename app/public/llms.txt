@@ -1,22 +1,12 @@
 # Vantum Intelligence
 
-> Client acquisition systems for remodelers and home-service businesses.
+> The #1 Client Acquisition System for Growing Businesses.
 
-Vantum Intelligence is a strategy, marketing, and implementation firm founded in 2025. It works remotely with owner-operated remodeling and home-service companies across the United States, typically those doing $1 million or more a year with two or more crews.
-
-The firm builds client acquisition systems: it diagnoses which stretch of a company's path from first click to signed contract is losing work, then rebuilds that stretch. It delivers five connected services — strategy and planning, advertising and creative, websites and landing pages, search and AI visibility (SEO and AEO), and automation and follow-up — and carries out the work directly rather than handing strategy to separate vendors for implementation.
-
-What separates it from a lead service is sequence. A lead service is paid the moment it hands over a name, so nothing it earns depends on what happens next, and the same name is often sold to more than one company. Vantum Intelligence runs campaigns too, but the inquiries belong to the client and are never resold, and volume is not turned up until the follow-up, the landing page, and the search presence can carry it.
-
-Engagements open with a free 30-minute path review on a screen share, which walks the company's own path and names what to fix first. Retainers run $2,500, $4,000, or $6,500+ per month with a 3-month minimum, plus a one-time setup fee of $2,000–$5,000. Ad spend is separate and paid from client-owned ad accounts. Results are reported against booked calls and signed work rather than impressions.
-
-Contact: contact@vantumintelligence.com
+Vantum Intelligence is a business strategy, marketing, and implementation company that builds client acquisition systems for growing businesses. It combines five connected services: strategy and planning (customer research, positioning, and marketing planning), advertising and creative (static and video ad production, campaign management, and creative testing), websites and landing pages (business websites, landing pages, and booking/inquiry forms), search and AI visibility (SEO and AEO work to help search engines and AI tools find and interpret the business), and automation and follow-up (inquiry response, customer follow-up, and CRM workflows). Vantum Intelligence identifies what needs attention and carries out the work directly, rather than handing off strategy to separate vendors.
 
 ## Pages
 
-- [Home](https://vantumintelligence.com/): What Vantum Intelligence is, who runs it, and the five services.
-- [Marketing for remodelers](https://vantumintelligence.com/remodeler-marketing): The path problem, the five stations between a homeowner and a signed contract, pricing, and remodeler FAQs.
-- [Services](https://vantumintelligence.com/services): Full description of all five services, plus FAQs on scope, pricing, and account ownership.
-- [Work](https://vantumintelligence.com/work): Ad creative and campaign reel produced inside client engagements.
-- [About](https://vantumintelligence.com/about): Founding, the founder's background, and how engagements are structured and priced.
-- [Contact](https://vantumintelligence.com/contact): Email, booking link, and service area.
+- [Home](https://vantumintelligence.com/): Overview of Vantum Intelligence's strategy, advertising, web, search visibility, and automation services.
+- [Services](https://vantumintelligence.com/services): Full breakdown of all five services, with FAQs.
+- [Work](https://vantumintelligence.com/work): Selected ad creative and campaign work built for clients.
+- [About](https://vantumintelligence.com/about): Vantum Intelligence's background and operating philosophy.

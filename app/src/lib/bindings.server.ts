@@ -24,9 +24,6 @@ type AppEnv = {
   CONTAINER?: DurableObjectNamespace;
   HF_ENV?: string;
   APP_SLUG?: string;
-  // Secrets for /api/path-review, set with `wrangler secret put`.
-  GHL_WEBHOOK_URL?: string;
-  TURNSTILE_SECRET?: string;
 };
 
 export function bindings(): AppEnv {

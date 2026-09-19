@@ -1,14 +1,12 @@
+import { Link } from "@tanstack/react-router";
+
 const LINKS = [
-  { to: "/remodeler-marketing", label: "For remodelers" },
-  { to: "/services", label: "Services" },
-  { to: "/work", label: "Work" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
+  { to: "/services" as const, label: "Services" },
+  { to: "/work" as const, label: "Work" },
+  { to: "/about" as const, label: "About" },
 ];
 
-type PageSlug = "remodeler-marketing" | "services" | "work" | "about" | "contact";
-
-export function PageCrossLinks({ hide }: { hide?: PageSlug }) {
+export function PageCrossLinks({ hide }: { hide?: "services" | "work" | "about" }) {
   const items = LINKS.filter((l) => l.to !== `/${hide}`);
 
   return (
@@ -20,8 +18,8 @@ export function PageCrossLinks({ hide }: { hide?: PageSlug }) {
       <ul className="mt-6 flex flex-wrap gap-x-10 gap-y-4">
         {items.map((item) => (
           <li key={item.to}>
-            <a
-              href={item.to}
+            <Link
+              to={item.to}
               className="group inline-flex items-center gap-2 font-display text-xl font-medium text-[#f5f1e8] transition-colors hover:text-[#c9a24b]"
             >
               {item.label}
@@ -34,16 +32,16 @@ export function PageCrossLinks({ hide }: { hide?: PageSlug }) {
               >
                 <path d="M2 8h11M8 3l5 5-5 5" />
               </svg>
-            </a>
+            </Link>
           </li>
         ))}
         <li>
-          <a
-            href="/"
+          <Link
+            to="/"
             className="group inline-flex items-center gap-2 font-display text-xl font-medium text-[#f5f1e8]/60 transition-colors hover:text-[#c9a24b]"
           >
             Home
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

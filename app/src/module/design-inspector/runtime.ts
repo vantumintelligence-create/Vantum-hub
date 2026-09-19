@@ -533,14 +533,14 @@ export function installHiggsfieldDesignInspector() {
     if (event.source !== window.parent) {
       return;
     }
-    if (!isTrustedParentOrigin(event.origin)) {
-      return;
-    }
     if (isPreviewCropMessage(event.data)) {
       scrollToPreviewCrop(event.data);
       return;
     }
     if (isSetMessage(event.data)) {
+      if (!isTrustedParentOrigin(event.origin)) {
+        return;
+      }
       setEnabled(event.data, event.origin);
     }
   });
