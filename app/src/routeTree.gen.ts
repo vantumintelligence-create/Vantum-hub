@@ -15,6 +15,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiPathReviewRouteImport } from './routes/api/path-review'
 
 const WorkRoute = WorkRouteImport.update({
   id: '/work',
@@ -46,6 +47,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPathReviewRoute = ApiPathReviewRouteImport.update({
+  id: '/api/path-review',
+  path: '/api/path-review',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work': typeof WorkRoute
+  '/api/path-review': typeof ApiPathReviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work': typeof WorkRoute
+  '/api/path-review': typeof ApiPathReviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,13 +79,27 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work': typeof WorkRoute
+  '/api/path-review': typeof ApiPathReviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/robots.txt' | '/services' | '/sitemap.xml' | '/work'
+    | '/'
+    | '/about'
+    | '/robots.txt'
+    | '/services'
+    | '/sitemap.xml'
+    | '/work'
+    | '/api/path-review'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/robots.txt' | '/services' | '/sitemap.xml' | '/work'
+  to:
+    | '/'
+    | '/about'
+    | '/robots.txt'
+    | '/services'
+    | '/sitemap.xml'
+    | '/work'
+    | '/api/path-review'
   id:
     | '__root__'
     | '/'
@@ -86,6 +108,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/work'
+    | '/api/path-review'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -95,6 +118,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   WorkRoute: typeof WorkRoute
+  ApiPathReviewRoute: typeof ApiPathReviewRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -141,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/path-review': {
+      id: '/api/path-review'
+      path: '/api/path-review'
+      fullPath: '/api/path-review'
+      preLoaderRoute: typeof ApiPathReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -151,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   WorkRoute: WorkRoute,
+  ApiPathReviewRoute: ApiPathReviewRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
