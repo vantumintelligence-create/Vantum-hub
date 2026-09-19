@@ -61,6 +61,18 @@ export function Footer() {
           >
             About
           </a>
+          <a
+            href="/privacy"
+            className="font-mono-vt text-[11px] uppercase tracking-[0.16em] text-[#f5f1e8]/55 transition-colors hover:text-[#c9a24b]"
+          >
+            Privacy
+          </a>
+          <a
+            href="/terms"
+            className="font-mono-vt text-[11px] uppercase tracking-[0.16em] text-[#f5f1e8]/55 transition-colors hover:text-[#c9a24b]"
+          >
+            Terms
+          </a>
         </nav>
         <div className="flex items-center gap-6">
           <span className="font-mono-vt text-[11px] uppercase leading-relaxed tracking-[0.16em] text-[#f5f1e8]/55">

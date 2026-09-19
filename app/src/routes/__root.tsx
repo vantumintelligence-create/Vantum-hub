@@ -13,7 +13,7 @@ import appCss from "../styles.css?url";
 import { reportHiggsfieldError } from "../lib/higgsfield-error-reporting";
 import { FloatingCta } from "../components/site/floating-cta";
 import appMetaJson from "../app-meta.json";
-import { SITE_DESCRIPTION, SITE_NAME } from "../lib/site";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "../lib/site";
 
 declare const __HF_DESIGN_INSPECTOR__: boolean;
 
@@ -51,7 +51,12 @@ function toOwnAssetUrl(value: string | null | undefined): string | null {
 function buildHead(meta: AppMeta) {
   const title = meta.og_title ?? DEFAULT_TITLE;
   const description = meta.og_description ?? DEFAULT_DESCRIPTION;
-  const ogImage = toOwnAssetUrl(meta.og_image_url);
+  // og:image and twitter:image must be absolute. Slack and LinkedIn will not
+  // resolve a site-relative path, so a local asset gets the origin prefixed.
+  const ogImageRaw = toOwnAssetUrl(meta.og_image_url);
+  const ogImage = ogImageRaw?.startsWith("/")
+    ? `${SITE_URL}${ogImageRaw}`
+    : ogImageRaw;
   const favicon = toOwnAssetUrl(meta.favicon_url);
   const ogVideo = toOwnAssetUrl(meta.og_video_url);
 
