@@ -13,11 +13,14 @@ import appCss from "../styles.css?url";
 import { reportHiggsfieldError } from "../lib/higgsfield-error-reporting";
 import { FloatingCta } from "../components/site/floating-cta";
 import appMetaJson from "../app-meta.json";
+import { SITE_DESCRIPTION, SITE_NAME } from "../lib/site";
 
 declare const __HF_DESIGN_INSPECTOR__: boolean;
 
-const DEFAULT_TITLE = "Vantum Intelligence";
-const DEFAULT_DESCRIPTION = "The #1 Client Acquisition System for Growing Businesses.";
+// Stated once in lib/site.ts so the head tags and the JSON-LD graph cannot
+// drift apart.
+const DEFAULT_TITLE = SITE_NAME;
+const DEFAULT_DESCRIPTION = SITE_DESCRIPTION;
 
 type AppMeta = {
   og_title?: string | null;
@@ -77,12 +80,10 @@ function buildHead(meta: AppMeta) {
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" as const },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap",
-      },
+      // No Google Fonts stylesheet. The Quanta theme imported by styles.css
+      // already ships byte-identical @font-face files for all three families
+      // (Inter, Space Grotesk, IBM Plex Mono) with wider subset coverage, so
+      // the third-party stylesheet was a duplicate render-blocking request.
       ...(favicon ? [{ rel: "icon", href: favicon }] : []),
       { rel: "icon", type: "image/png", sizes: "16x16", href: "/assets/favicon-16.png" },
       { rel: "icon", type: "image/png", sizes: "192x192", href: "/assets/icon-192.png" },

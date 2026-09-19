@@ -5,7 +5,10 @@ export const Route = createFileRoute("/sitemap.xml")({
     handlers: {
       GET: async ({ request }) => {
         const origin = new URL(request.url).origin;
-        const today = new Date().toISOString().split("T")[0];
+        // No <lastmod>. It used to be stamped with the request date, which told
+        // crawlers every page had changed today on every single fetch. Omitting
+        // the element is better than publishing a value we cannot substantiate;
+        // reinstate it per-route only with real content-change dates.
         const routes = [
           { path: "/", priority: "1.0", changefreq: "weekly" },
           { path: "/services", priority: "0.9", changefreq: "monthly" },
@@ -17,7 +20,6 @@ export const Route = createFileRoute("/sitemap.xml")({
             (r) =>
               `  <url>\n` +
               `    <loc>${origin}${r.path === "/" ? "" : r.path}</loc>\n` +
-              `    <lastmod>${today}</lastmod>\n` +
               `    <changefreq>${r.changefreq}</changefreq>\n` +
               `    <priority>${r.priority}</priority>\n` +
               `  </url>`,

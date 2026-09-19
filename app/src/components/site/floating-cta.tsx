@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { loadCalendlyScript, openCalendlyPopup } from "../../lib/calendly";
+import { CALENDLY_PUBLIC_URL } from "../../lib/site";
 
 const WIDGET_CSS = "https://assets.calendly.com/assets/external/widget.css";
 
@@ -33,8 +34,11 @@ export function FloatingCta() {
   }, []);
 
   return (
-    <button
-      type="button"
+    // A real link to the booking page. The Calendly popup is layered on top of
+    // it on click, so the destination still works before hydration and with
+    // JavaScript off.
+    <a
+      href={CALENDLY_PUBLIC_URL}
       onClick={openCalendlyPopup}
       aria-label="Book a call"
       className={`fixed bottom-4 right-4 z-50 rounded-sm border border-[#c9a24b]/50 bg-black/55 px-4 py-2.5 font-mono-vt text-xs tracking-[0.04em] text-[#c9a24b] backdrop-blur-sm transition-[opacity,transform,border-color] duration-300 ease-out hover:border-[#c9a24b] focus-visible:border-[#c9a24b] focus-visible:outline-none motion-reduce:translate-y-0 motion-reduce:duration-200 sm:bottom-6 sm:right-6 sm:px-5 sm:py-3 sm:text-[13px] ${
@@ -44,6 +48,6 @@ export function FloatingCta() {
       }`}
     >
       Book a Call →
-    </button>
+    </a>
   );
 }

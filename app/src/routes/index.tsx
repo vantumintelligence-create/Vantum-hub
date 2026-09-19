@@ -7,14 +7,24 @@ import { Work } from "../components/site/work";
 import { About } from "../components/site/about";
 import { Footer } from "../components/site/footer";
 import { StructuredData } from "../components/site/structured-data";
-import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "../lib/site";
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_DESCRIPTION,
+  CONTACT_EMAIL,
+  FOUNDING_YEAR,
+  AREA_SERVED,
+  ORG_ID,
+  WEBSITE_ID,
+  LOGO_ID,
+} from "../lib/site";
 
 const HOME_SCHEMA = JSON.stringify({
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "ImageObject",
-      "@id": `${SITE_URL}/#logo`,
+      "@id": LOGO_ID,
       url: `${SITE_URL}/assets/icon-512.png`,
       contentUrl: `${SITE_URL}/assets/icon-512.png`,
       width: 512,
@@ -23,22 +33,31 @@ const HOME_SCHEMA = JSON.stringify({
     },
     {
       "@type": "Organization",
-      "@id": `${SITE_URL}/#org`,
+      "@id": ORG_ID,
       name: SITE_NAME,
       url: SITE_URL,
-      logo: { "@id": `${SITE_URL}/#logo` },
-      image: { "@id": `${SITE_URL}/#logo` },
+      logo: { "@id": LOGO_ID },
+      image: { "@id": LOGO_ID },
       description: SITE_DESCRIPTION,
+      email: CONTACT_EMAIL,
+      foundingDate: FOUNDING_YEAR,
+      areaServed: { "@type": "Country", name: AREA_SERVED },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        email: CONTACT_EMAIL,
+        availableLanguage: "English",
+      },
     },
     {
       "@type": "WebSite",
-      "@id": `${SITE_URL}/#website`,
+      "@id": WEBSITE_ID,
       name: SITE_NAME,
       url: SITE_URL,
-      publisher: { "@id": `${SITE_URL}/#org` },
+      publisher: { "@id": ORG_ID },
     },
     {
-      "@type": "ProfessionalService",
+      "@type": "Service",
       "@id": `${SITE_URL}/#service`,
       name: SITE_NAME,
       url: SITE_URL,
@@ -50,12 +69,12 @@ const HOME_SCHEMA = JSON.stringify({
         "Search & AI Visibility",
         "Automation & Follow-Up",
       ],
-      provider: { "@id": `${SITE_URL}/#org` },
+      provider: { "@id": ORG_ID },
     },
   ],
 });
 
-const HOME_TITLE = "#1 Client Acquisition System for Growing Businesses | Vantum Intelligence";
+const HOME_TITLE = "Client Acquisition Systems | Vantum Intelligence";
 
 export const Route = createFileRoute("/")({
   head: () => ({

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { openCalendlyPopup } from "../../lib/calendly";
+import { CALENDLY_PUBLIC_URL } from "../../lib/site";
 
 const LINKS = [
   { href: "/#top", label: "Home" },
@@ -145,7 +146,7 @@ export function SiteNav() {
         <div className="flex items-center gap-3">
           {!menuOpen && (
             <a
-              href="#"
+              href={CALENDLY_PUBLIC_URL}
               onClick={openCalendlyPopup}
               className="inline-flex items-center gap-2 rounded-md border border-[#f5f1e8]/25 px-4 py-2 font-mono-vt text-[10px] uppercase tracking-[0.16em] text-[#f5f1e8] transition-colors hover:border-[#c9a24b] hover:text-[#c9a24b]"
             >
@@ -202,7 +203,7 @@ export function SiteNav() {
 
           <div className="border-t border-[#f5f1e8]/8 px-6 py-6">
             <a
-              href="#"
+              href={CALENDLY_PUBLIC_URL}
               onClick={(event) => {
                 closeMenu();
                 openCalendlyPopup(event);
@@ -260,7 +261,7 @@ export function SiteNav() {
 
       {/* Desktop corner CTA */}
       <a
-        href="#"
+        href={CALENDLY_PUBLIC_URL}
         onClick={openCalendlyPopup}
         className="fixed right-8 top-8 z-40 hidden items-center gap-2.5 rounded-md border border-[#f5f1e8]/25 px-5 py-3 font-mono-vt text-[11px] uppercase tracking-[0.18em] text-[#f5f1e8] transition-colors hover:border-[#c9a24b] hover:text-[#c9a24b] lg:inline-flex"
       >

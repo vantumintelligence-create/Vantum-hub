@@ -1,6 +1,7 @@
 "use client";
 
 import { openCalendlyPopup } from "../../lib/calendly";
+import { CALENDLY_PUBLIC_URL } from "../../lib/site";
 
 const HERO_IMAGE = "/assets/hero-quiet.webp";
 
@@ -29,7 +30,7 @@ export function Opening() {
               positioning and advertising to websites, search visibility, and customer follow-up.
             </p>
             <a
-              href="#"
+              href={CALENDLY_PUBLIC_URL}
               onClick={openCalendlyPopup}
               className="mt-7 inline-flex items-center gap-2.5 rounded-md border border-[#c9a24b]/60 px-6 py-3.5 font-mono-vt text-[11px] uppercase tracking-[0.18em] text-[#c9a24b] transition-colors hover:bg-[#c9a24b] hover:text-[#0b0906]"
             >
