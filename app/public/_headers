@@ -1,0 +1,48 @@
+# Static-asset headers (Cloudflare Workers static assets). Worker-rendered
+# HTML gets its headers in src/lib/security-headers.server.ts.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+# Vite emits content-hashed bundles into /assets, so those are safe to freeze.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ...but everything copied verbatim from public/assets keeps its filename across
+# edits, so it must stay replaceable. More specific rules win over /assets/*.
+/assets/work/*
+  Cache-Control: public, max-age=604800
+
+/assets/og-default.jpg
+  Cache-Control: public, max-age=86400
+
+/assets/hero-quiet*
+  Cache-Control: public, max-age=604800
+
+/assets/tile-*
+  Cache-Control: public, max-age=604800
+
+/assets/icon-*
+  Cache-Control: public, max-age=604800
+
+/assets/favicon*
+  Cache-Control: public, max-age=604800
+
+/assets/apple-touch-icon.png
+  Cache-Control: public, max-age=604800
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+/presets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/llms.txt
+  Cache-Control: public, max-age=86400
+
+/site.webmanifest
+  Cache-Control: public, max-age=86400

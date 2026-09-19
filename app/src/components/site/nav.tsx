@@ -3,74 +3,25 @@
 import { useEffect, useState } from "react";
 
 import { openCalendlyPopup } from "../../lib/calendly";
+import { CALENDLY_PUBLIC_URL } from "../../lib/site";
 
+// Real pages, not homepage anchors: each entry is a crawlable URL with its own
+// title, canonical and schema.
 const LINKS = [
-  { href: "/#top", label: "Home" },
-  { href: "/#services", label: "Services" },
-  { href: "/#work", label: "Work" },
-  { href: "/#about", label: "About" },
+  { href: "/", label: "Home" },
+  { href: "/remodeler-marketing", label: "Remodelers" },
+  { href: "/services", label: "Services" },
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
-const SECTION_IDS = ["top", "services", "work", "about"];
-const PATH_TO_SECTION: Record<string, string> = {
-  "/": "top",
-  "/services": "services",
-  "/work": "work",
-  "/about": "about",
-};
-
-function useActiveSection() {
-  const [activeId, setActiveId] = useState("top");
-
+function useActivePath() {
+  const [active, setActive] = useState("/");
   useEffect(() => {
-    const pathSection = PATH_TO_SECTION[window.location.pathname];
-    // On a standalone page (not the scrolling homepage), the nav highlights
-    // that page's link directly instead of running the scroll-spy observer,
-    // which only has sections to watch on "/".
-    if (pathSection && pathSection !== "top") {
-      setActiveId(pathSection);
-      return;
-    }
-
-    const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(
-      (el): el is HTMLElement => el !== null,
-    );
-    if (sections.length === 0) return;
-
-    // Track intersection state per section rather than relying on a single
-    // callback batch: a short section (e.g. Services collapsed) can enter and
-    // leave a narrow detection band between two scroll frames, so we keep a
-    // running record and always resolve to the lowest (most recently
-    // entered) section that is still intersecting, in document order.
-    const intersecting = new Set<string>();
-
-    const resolveActive = () => {
-      for (let i = SECTION_IDS.length - 1; i >= 0; i -= 1) {
-        if (intersecting.has(SECTION_IDS[i])) {
-          setActiveId(SECTION_IDS[i]);
-          return;
-        }
-      }
-    };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) intersecting.add(entry.target.id);
-          else intersecting.delete(entry.target.id);
-        }
-        resolveActive();
-      },
-      // Treat the top third of the viewport as the "current section" band —
-      // wide enough that short sections still register as they pass through.
-      { rootMargin: "0px 0px -66% 0px", threshold: 0 },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    setActive(window.location.pathname.replace(/\/+$/, "") || "/");
   }, []);
-
-  return activeId;
+  return active;
 }
 
 function Wordmark({
@@ -81,7 +32,7 @@ function Wordmark({
   subClassName: string;
 }) {
   return (
-    <a href="/#top" className="inline-block leading-none">
+    <a href="/" className="inline-block leading-none" aria-label="Vantum Intelligence home">
       <span className={`block font-display font-semibold text-[#f5f1e8] ${titleClassName}`}>
         VANTUM
       </span>
@@ -107,11 +58,24 @@ function MenuIcon({ open }: { open: boolean }) {
   );
 }
 
+function Arrow() {
+  return (
+    <svg
+      className="h-3 w-3"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+    >
+      <path d="M2 8h11M8 3l5 5-5 5" />
+    </svg>
+  );
+}
+
 export function SiteNav() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const activeId = useActiveSection();
+  const active = useActivePath();
 
-  // Close the menu with Escape
   useEffect(() => {
     if (!menuOpen) return;
     const onKeyDown = (event: KeyboardEvent) => {
@@ -121,7 +85,6 @@ export function SiteNav() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [menuOpen]);
 
-  // Lock background scroll while the menu is open
   useEffect(() => {
     if (!menuOpen) return;
     const previous = document.body.style.overflow;
@@ -132,6 +95,30 @@ export function SiteNav() {
   }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
+
+  const renderLinks = (dim: string) =>
+    LINKS.map((l) => {
+      const isActive = l.href === active;
+      return (
+        <li key={l.href}>
+          <a
+            href={l.href}
+            onClick={closeMenu}
+            aria-current={isActive ? "page" : undefined}
+            className={`group flex items-center gap-3 font-mono-vt text-xs uppercase tracking-[0.2em] transition-colors ${
+              isActive ? "text-[#f5f1e8]" : dim
+            }`}
+          >
+            <span
+              className={`h-px bg-current transition-all duration-300 ${
+                isActive ? "w-4" : "w-0 group-hover:w-4"
+              }`}
+            />
+            {l.label}
+          </a>
+        </li>
+      );
+    });
 
   return (
     <>
@@ -145,11 +132,11 @@ export function SiteNav() {
         <div className="flex items-center gap-3">
           {!menuOpen && (
             <a
-              href="#"
+              href={CALENDLY_PUBLIC_URL}
               onClick={openCalendlyPopup}
               className="inline-flex items-center gap-2 rounded-md border border-[#f5f1e8]/25 px-4 py-2 font-mono-vt text-[10px] uppercase tracking-[0.16em] text-[#f5f1e8] transition-colors hover:border-[#c9a24b] hover:text-[#c9a24b]"
             >
-              Get In Touch
+              Book a call
             </a>
           )}
           <button
@@ -164,7 +151,6 @@ export function SiteNav() {
           </button>
         </div>
 
-        {/* Mobile menu panel */}
         <div
           id="mobile-nav-menu"
           aria-hidden={!menuOpen}
@@ -174,51 +160,21 @@ export function SiteNav() {
               : "pointer-events-none invisible -translate-y-2 opacity-0"
           }`}
         >
-          <nav className="px-6 pb-4 pt-8">
-            <ul className="space-y-6">
-              {LINKS.map((l) => {
-                const isActive = l.href === `/#${activeId}`;
-                return (
-                  <li key={l.label}>
-                    <a
-                      href={l.href}
-                      onClick={closeMenu}
-                      className={`group flex items-center gap-3 font-mono-vt text-xs uppercase tracking-[0.2em] transition-colors ${
-                        isActive ? "text-[#f5f1e8]" : "text-[#f5f1e8]/55 hover:text-[#f5f1e8]"
-                      }`}
-                    >
-                      <span
-                        className={`h-px bg-current transition-all duration-300 ${
-                          isActive ? "w-4" : "w-0 group-hover:w-4"
-                        }`}
-                      />
-                      {l.label}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
+          <nav aria-label="Primary" className="px-6 pb-4 pt-8">
+            <ul className="space-y-6">{renderLinks("text-[#f5f1e8]/55 hover:text-[#f5f1e8]")}</ul>
           </nav>
 
           <div className="border-t border-[#f5f1e8]/8 px-6 py-6">
             <a
-              href="#"
+              href={CALENDLY_PUBLIC_URL}
               onClick={(event) => {
                 closeMenu();
                 openCalendlyPopup(event);
               }}
               className="inline-flex items-center gap-2 rounded-md border border-[#c9a24b]/50 px-5 py-3 font-mono-vt text-[11px] uppercase tracking-[0.18em] text-[#c9a24b] transition-colors hover:bg-[#c9a24b] hover:text-[#0b0906]"
             >
-              Get In Touch
-              <svg
-                className="h-3 w-3"
-                viewBox="0 0 16 16"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-              >
-                <path d="M2 8h11M8 3l5 5-5 5" />
-              </svg>
+              Book a 30-minute call
+              <Arrow />
             </a>
           </div>
         </div>
@@ -231,28 +187,9 @@ export function SiteNav() {
             titleClassName="text-2xl tracking-[0.06em]"
             subClassName="text-[10px] tracking-[0.42em]"
           />
-          <nav className="mt-20">
+          <nav aria-label="Primary" className="mt-20">
             <ul className="space-y-7">
-              {LINKS.map((l) => {
-                const isActive = l.href === `/#${activeId}`;
-                return (
-                  <li key={l.label}>
-                    <a
-                      href={l.href}
-                      className={`group flex items-center gap-3 font-mono-vt text-xs uppercase tracking-[0.2em] transition-colors ${
-                        isActive ? "text-[#f5f1e8]" : "text-[#f5f1e8]/40 hover:text-[#f5f1e8]/75"
-                      }`}
-                    >
-                      <span
-                        className={`h-px bg-current transition-all duration-300 ${
-                          isActive ? "w-4" : "w-0 group-hover:w-4"
-                        }`}
-                      />
-                      {l.label}
-                    </a>
-                  </li>
-                );
-              })}
+              {renderLinks("text-[#f5f1e8]/40 hover:text-[#f5f1e8]/75")}
             </ul>
           </nav>
         </div>
@@ -260,20 +197,12 @@ export function SiteNav() {
 
       {/* Desktop corner CTA */}
       <a
-        href="#"
+        href={CALENDLY_PUBLIC_URL}
         onClick={openCalendlyPopup}
         className="fixed right-8 top-8 z-40 hidden items-center gap-2.5 rounded-md border border-[#f5f1e8]/25 px-5 py-3 font-mono-vt text-[11px] uppercase tracking-[0.18em] text-[#f5f1e8] transition-colors hover:border-[#c9a24b] hover:text-[#c9a24b] lg:inline-flex"
       >
-        Get In Touch
-        <svg
-          className="h-3 w-3"
-          viewBox="0 0 16 16"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.6"
-        >
-          <path d="M2 8h11M8 3l5 5-5 5" />
-        </svg>
+        Book a call
+        <Arrow />
       </a>
     </>
   );

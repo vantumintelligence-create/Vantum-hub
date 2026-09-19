@@ -1,3 +1,13 @@
+import {
+  CONTACT_EMAIL,
+  FUNNEL_URL,
+  POSITIONING,
+  PRIVACY_URL,
+  SITE_NAME,
+  SOCIAL_LINKS,
+  TERMS_URL,
+} from "../../lib/site";
+
 function InstagramIcon() {
   return (
     <svg
@@ -35,62 +45,83 @@ function YouTubeIcon() {
   );
 }
 
+const ICONS = { LinkedIn: LinkedInIcon, Instagram: InstagramIcon, YouTube: YouTubeIcon };
+
+const LINK_CLASS =
+  "font-mono-vt text-[11px] uppercase tracking-[0.16em] text-[#f5f1e8]/55 transition-colors hover:text-[#c9a24b]";
+
+const PAGES = [
+  { href: "/remodeler-marketing", label: "Remodelers" },
+  { href: "/services", label: "Services" },
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
 export function Footer() {
+  // Only real profile URLs render. Empty entries stay hidden.
+  const socials = SOCIAL_LINKS.filter((s) => s.href);
+
   return (
-    <footer className="border-t border-[#f5f1e8]/8 py-8">
-      <div className="mx-auto flex max-w-[1600px] flex-col items-center gap-4 px-6 lg:flex-row lg:justify-between lg:px-16">
-        <span className="font-mono-vt text-[11px] uppercase tracking-[0.16em] text-[#f5f1e8]/55">
-          © 2026 Vantum Intelligence
-        </span>
-        <nav aria-label="Footer" className="flex items-center gap-5">
-          <a
-            href="/services"
-            className="font-mono-vt text-[11px] uppercase tracking-[0.16em] text-[#f5f1e8]/55 transition-colors hover:text-[#c9a24b]"
-          >
-            Services
-          </a>
-          <a
-            href="/work"
-            className="font-mono-vt text-[11px] uppercase tracking-[0.16em] text-[#f5f1e8]/55 transition-colors hover:text-[#c9a24b]"
-          >
-            Work
-          </a>
-          <a
-            href="/about"
-            className="font-mono-vt text-[11px] uppercase tracking-[0.16em] text-[#f5f1e8]/55 transition-colors hover:text-[#c9a24b]"
-          >
-            About
-          </a>
-        </nav>
-        <div className="flex items-center gap-6">
-          <span className="font-mono-vt text-[11px] uppercase leading-relaxed tracking-[0.16em] text-[#f5f1e8]/55">
-            Vantum Intelligence
-            <br />
-            Client Acquisition Systems for Growing Businesses
-          </span>
-          <div className="flex items-center gap-4 text-[#f5f1e8]/70">
+    <footer className="border-t border-[#f5f1e8]/8 py-10">
+      <div className="mx-auto flex max-w-[1600px] flex-col gap-8 px-6 lg:px-16">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-sm">
+            <span className="block font-display text-base font-semibold tracking-[0.06em] text-[#f5f1e8]">
+              VANTUM INTELLIGENCE
+            </span>
+            <span className="mt-2 block text-[13px] leading-relaxed text-[#f5f1e8]/55">
+              {POSITIONING}
+            </span>
             <a
-              href="https://linkedin.com"
-              aria-label="LinkedIn"
-              className="transition-colors hover:text-[#c9a24b]"
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="mt-3 inline-block text-[13px] text-[#f5f1e8]/70 transition-colors hover:text-[#c9a24b]"
             >
-              <LinkedInIcon />
-            </a>
-            <a
-              href="https://instagram.com"
-              aria-label="Instagram"
-              className="transition-colors hover:text-[#c9a24b]"
-            >
-              <InstagramIcon />
-            </a>
-            <a
-              href="https://youtube.com"
-              aria-label="YouTube"
-              className="transition-colors hover:text-[#c9a24b]"
-            >
-              <YouTubeIcon />
+              {CONTACT_EMAIL}
             </a>
           </div>
+
+          <nav aria-label="Footer" className="flex flex-wrap items-center gap-x-5 gap-y-3">
+            {PAGES.map((p) => (
+              <a key={p.href} href={p.href} className={LINK_CLASS}>
+                {p.label}
+              </a>
+            ))}
+            <a href={FUNNEL_URL} className={LINK_CLASS}>
+              Free path review
+            </a>
+          </nav>
+
+          {socials.length > 0 && (
+            <div className="flex items-center gap-4 text-[#f5f1e8]/70">
+              {socials.map((s) => {
+                const Icon = ICONS[s.label];
+                return (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    aria-label={`Vantum Intelligence on ${s.label}`}
+                    rel="me noopener"
+                    className="transition-colors hover:text-[#c9a24b]"
+                  >
+                    <Icon />
+                  </a>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        <div className="flex flex-col gap-3 border-t border-[#f5f1e8]/8 pt-6 font-mono-vt text-[11px] uppercase tracking-[0.16em] text-[#f5f1e8]/45 sm:flex-row sm:items-center sm:justify-between">
+          <span>© 2026 {SITE_NAME}</span>
+          <span className="flex items-center gap-5">
+            <a href={PRIVACY_URL} className="transition-colors hover:text-[#c9a24b]">
+              Privacy
+            </a>
+            <a href={TERMS_URL} className="transition-colors hover:text-[#c9a24b]">
+              Terms
+            </a>
+          </span>
         </div>
       </div>
     </footer>

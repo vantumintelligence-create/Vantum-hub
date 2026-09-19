@@ -1,4 +1,4 @@
-export {};
+import { CALENDLY_PUBLIC_URL } from "./site";
 
 declare global {
   interface Window {
@@ -15,8 +15,10 @@ declare global {
   }
 }
 
-export const CALENDLY_URL =
-  "https://calendly.com/vantumintelligence/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=161310&text_color=f5f1e8&primary_color=c9a24b";
+// Themed popup URL. The plain public URL (CALENDLY_PUBLIC_URL) is what every
+// CTA carries in its href, so the booking link works before hydration, for
+// crawlers, for AI agents and with JavaScript off. The popup is an enhancement.
+export const CALENDLY_URL = `${CALENDLY_PUBLIC_URL}?hide_event_type_details=1&hide_gdpr_banner=1&background_color=161310&text_color=f5f1e8&primary_color=c9a24b`;
 
 const CALENDLY_WIDGET_JS = "https://assets.calendly.com/assets/external/widget.js";
 

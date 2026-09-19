@@ -9,17 +9,31 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 
-// Ordered best-first by production value and impact.
-const REEL = [
-  { key: "dinner-ad", media: "video" },
-  { key: "lamar-before-after", media: "video" },
-  { key: "frqncy-tap-ad", media: "video" },
-  { key: "lamar-crowd-ad", media: "video" },
-  { key: "pizza-ad", media: "video" },
-  { key: "frqncy-ad-1", media: "image" },
-  { key: "receipt-concept", media: "video" },
-  { key: "soundboard-ad", media: "video" },
+// Ordered best-first by production value and impact. Titles are the working
+// names of the pieces; `kind` is the format so a tile never reads as a bare
+// "Ad Creative".
+export const REEL = [
+  { key: "dinner-ad", media: "video", title: "Dinner ad", kind: "Short-form video ad" },
+  {
+    key: "lamar-before-after",
+    media: "video",
+    title: "Lamar before and after",
+    kind: "Before-and-after video",
+  },
+  { key: "frqncy-tap-ad", media: "video", title: "FRQNCY tap ad", kind: "Short-form video ad" },
+  {
+    key: "lamar-crowd-ad",
+    media: "video",
+    title: "Lamar crowd ad",
+    kind: "Event activation video",
+  },
+  { key: "pizza-ad", media: "video", title: "Pizza ad", kind: "Short-form video ad" },
+  { key: "frqncy-ad-1", media: "image", title: "FRQNCY static ad", kind: "Static ad" },
+  { key: "receipt-concept", media: "video", title: "Receipt concept", kind: "Concept video" },
+  { key: "soundboard-ad", media: "video", title: "Soundboard ad", kind: "Short-form video ad" },
 ] as const;
+
+type ReelItem = (typeof REEL)[number];
 
 function SoundIcon({ muted }: { muted: boolean }) {
   return (
@@ -58,55 +72,97 @@ function ArrowIcon({ direction }: { direction: "left" | "right" }) {
   );
 }
 
-function ReelTile({ item }: { item: (typeof REEL)[number] }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [muted, setMuted] = useState(true);
-  const isImage = item.media === "image";
+// Plays only while the tile is on screen. Nothing is fetched until then
+// (preload="none"), so the page weight is the posters, not seven clips.
+function ReelVideo({ item, muted }: { item: ReelItem; muted: boolean }) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = ref.current;
+    if (!video) return;
+    // Respect a reduced-motion preference: leave the poster in place.
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          void video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.5 },
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="group relative aspect-[3/4] overflow-hidden bg-[#141210]">
-      {isImage ? (
+    <video
+      ref={ref}
+      src={`/assets/work/${item.key}.mp4`}
+      poster={`/assets/work/${item.key}.jpg`}
+      className="h-full w-full object-cover"
+      muted={muted}
+      loop
+      playsInline
+      preload="none"
+      aria-label={`${item.title}: ${item.kind}`}
+    />
+  );
+}
+
+function ReelTile({ item, posterOnly }: { item: ReelItem; posterOnly: boolean }) {
+  const [muted, setMuted] = useState(true);
+  const isImage = item.media === "image";
+  const showVideo = !isImage && !posterOnly;
+
+  return (
+    <figure className="group relative aspect-[3/4] overflow-hidden bg-[#141210]">
+      {showVideo ? (
+        <ReelVideo item={item} muted={muted} />
+      ) : (
         <img
           src={`/assets/work/${item.key}.jpg`}
-          alt="Ad creative"
+          alt={`${item.title}, ${item.kind.toLowerCase()} by Vantum Intelligence`}
           className="h-full w-full object-cover"
           loading="lazy"
-        />
-      ) : (
-        <video
-          ref={videoRef}
-          src={`/assets/work/${item.key}.mp4`}
-          poster={`/assets/work/${item.key}.jpg`}
-          className="h-full w-full object-cover"
-          muted={muted}
-          loop
-          autoPlay
-          playsInline
-          preload="metadata"
+          decoding="async"
         />
       )}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
 
-      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 px-5 py-5">
-        <span className="font-mono-vt text-[10px] uppercase tracking-[0.2em] text-[#c9a24b]">
-          Ad Creative
+      <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 px-5 py-5">
+        <span className="min-w-0">
+          <span className="block truncate font-display text-sm font-medium text-[#f5f1e8]">
+            {item.title}
+          </span>
+          <span className="mt-1 block font-mono-vt text-[10px] uppercase tracking-[0.2em] text-[#c9a24b]">
+            {item.kind}
+          </span>
         </span>
-        {!isImage && (
+        {showVideo && (
           <button
             type="button"
             onClick={() => setMuted((m) => !m)}
-            aria-label={muted ? "Unmute" : "Mute"}
+            aria-label={muted ? `Unmute ${item.title}` : `Mute ${item.title}`}
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#f5f1e8]/30 bg-[#0b0906]/60 text-[#f5f1e8] backdrop-blur-sm transition-colors hover:border-[#c9a24b] hover:text-[#c9a24b]"
           >
             <SoundIcon muted={muted} />
           </button>
         )}
-      </div>
-    </div>
+      </figcaption>
+    </figure>
   );
 }
 
-export function Work({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2" } = {}) {
+export function Work({
+  headingLevel = "h2",
+  posterOnly = false,
+}: {
+  headingLevel?: "h1" | "h2";
+  // The homepage shows posters only and sends the visitor to /work to play.
+  posterOnly?: boolean;
+} = {}) {
   const Heading = headingLevel;
   const [api, setApi] = useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = useState(false);
@@ -114,16 +170,13 @@ export function Work({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2" } = {
 
   useEffect(() => {
     if (!api) return;
-
     const update = () => {
       setCanScrollPrev(api.canScrollPrev());
       setCanScrollNext(api.canScrollNext());
     };
-
     update();
     api.on("select", update);
     api.on("reInit", update);
-
     return () => {
       api.off("select", update);
       api.off("reInit", update);
@@ -137,8 +190,18 @@ export function Work({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2" } = {
           <p className="vt-chapter-num">Work</p>
           <Heading className="vt-display-xl mt-8 max-w-4xl text-[#f5f1e8]">Selected Work</Heading>
           <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-[#f5f1e8]/65">
-            A sample of ad creative and campaign work built for clients — sound on for the full
-            effect.
+            {posterOnly ? (
+              <>
+                Ad creative and campaign work produced by Vantum Intelligence for client
+                engagements.{" "}
+                <a href="/work" className="text-[#c9a24b] underline-offset-4 hover:underline">
+                  Watch the reel
+                </a>
+                .
+              </>
+            ) : (
+              "Ad creative from live campaigns. Sound on."
+            )}
           </p>
         </div>
 
@@ -168,7 +231,13 @@ export function Work({ headingLevel = "h2" }: { headingLevel?: "h1" | "h2" } = {
         <CarouselContent className="ml-0 gap-4 pl-6 pr-6 lg:pl-60 lg:pr-16">
           {REEL.map((item) => (
             <CarouselItem key={item.key} className="basis-[78%] pl-0 sm:basis-1/2 lg:basis-1/4">
-              <ReelTile item={item} />
+              {posterOnly ? (
+                <a href="/work" aria-label={`${item.title} on the work page`} className="block">
+                  <ReelTile item={item} posterOnly />
+                </a>
+              ) : (
+                <ReelTile item={item} posterOnly={false} />
+              )}
             </CarouselItem>
           ))}
         </CarouselContent>
